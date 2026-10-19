@@ -1,0 +1,45 @@
+{
+  "description": "Deterministic 24-shot and guided-shot traces; both nylon/chain centered/off-centre 240 Hz drops including initialization. Each optimized trace is bit-identical to the unchanged 1.9.0 solver. Operation counts are instrumented CPU Math calls, not device FPS.",
+  "before": {
+    "source": "/tmp/pota-opt-baseline",
+    "digests": {
+      "physics": "5ac5e9a211b94c007a07e2dcf1402517a299f5b96cf353ee7158a9defa440deb",
+      "net": "c8e8e4bfe6ce8056e9492951a7cbb0ae521501d2e59969b97e8235ed99540e4f"
+    },
+    "physicsOperations": {
+      "hypot": 177094,
+      "sqrt": 137,
+      "expm1": 90079,
+      "log1p": 16958,
+      "exp": 58749
+    },
+    "netOperations": {
+      "hypot": 50908306,
+      "exp": 5892,
+      "sqrt": 18126412
+    }
+  },
+  "after": {
+    "source": "/workspace/sites/pota/src",
+    "digests": {
+      "physics": "5ac5e9a211b94c007a07e2dcf1402517a299f5b96cf353ee7158a9defa440deb",
+      "net": "c8e8e4bfe6ce8056e9492951a7cbb0ae521501d2e59969b97e8235ed99540e4f"
+    },
+    "physicsOperations": {
+      "hypot": 1037,
+      "sqrt": 137,
+      "expm1": 73156,
+      "exp": 58749,
+      "log1p": 35
+    },
+    "netOperations": {
+      "hypot": 2096384,
+      "exp": 5892,
+      "sqrt": 17839128
+    }
+  },
+  "xpbd_compliance_divisions_per_active_substep": {
+    "before": 3024,
+    "after": 168
+  }
+}

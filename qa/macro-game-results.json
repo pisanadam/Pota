@@ -1,0 +1,260 @@
+{
+  "passed": true,
+  "implementation": "Actual game/PointerEvent/scoring/storage with real physics/fairplay/reward controller; scene/audio-only fixture",
+  "videoEvidence": "Two vertical strokes about5.2seconds apart; delivered event count and timestamp jitter are not visible in the recording",
+  "patterns": [
+    {
+      "kind": "exact",
+      "warningAt": 8,
+      "restrictedAt": 9,
+      "normalShots": 40,
+      "normalCurvedShots": 20,
+      "normalSameOriginStraightShots": 20,
+      "pauseCannotClearFlight": true,
+      "report": [
+        {
+          "shot": 1,
+          "status": "clear",
+          "repeatCount": 1,
+          "award": 4,
+          "blocked": false
+        },
+        {
+          "shot": 2,
+          "status": "clear",
+          "repeatCount": 2,
+          "award": 5,
+          "blocked": false
+        },
+        {
+          "shot": 3,
+          "status": "clear",
+          "repeatCount": 3,
+          "award": 6,
+          "blocked": false
+        },
+        {
+          "shot": 4,
+          "status": "clear",
+          "repeatCount": 4,
+          "award": 7,
+          "blocked": false
+        },
+        {
+          "shot": 5,
+          "status": "clear",
+          "repeatCount": 5,
+          "award": 8,
+          "blocked": false
+        },
+        {
+          "shot": 6,
+          "status": "clear",
+          "repeatCount": 6,
+          "award": 9,
+          "blocked": false
+        },
+        {
+          "shot": 7,
+          "status": "clear",
+          "repeatCount": 7,
+          "award": 10,
+          "blocked": false
+        },
+        {
+          "shot": 8,
+          "status": "warning",
+          "repeatCount": 8,
+          "award": 11,
+          "blocked": false
+        },
+        {
+          "shot": 9,
+          "status": "restricted",
+          "repeatCount": 9,
+          "award": 0,
+          "blocked": true
+        }
+      ],
+      "wallet": 6394
+    },
+    {
+      "kind": "coalesced",
+      "warningAt": 8,
+      "restrictedAt": 9,
+      "normalShots": 40,
+      "normalCurvedShots": 20,
+      "normalSameOriginStraightShots": 20,
+      "pauseCannotClearFlight": true,
+      "report": [
+        {
+          "shot": 1,
+          "status": "clear",
+          "repeatCount": 1,
+          "award": 4,
+          "blocked": false
+        },
+        {
+          "shot": 2,
+          "status": "clear",
+          "repeatCount": 2,
+          "award": 5,
+          "blocked": false
+        },
+        {
+          "shot": 3,
+          "status": "clear",
+          "repeatCount": 3,
+          "award": 6,
+          "blocked": false
+        },
+        {
+          "shot": 4,
+          "status": "clear",
+          "repeatCount": 4,
+          "award": 7,
+          "blocked": false
+        },
+        {
+          "shot": 5,
+          "status": "clear",
+          "repeatCount": 5,
+          "award": 8,
+          "blocked": false
+        },
+        {
+          "shot": 6,
+          "status": "clear",
+          "repeatCount": 6,
+          "award": 9,
+          "blocked": false
+        },
+        {
+          "shot": 7,
+          "status": "clear",
+          "repeatCount": 7,
+          "award": 10,
+          "blocked": false
+        },
+        {
+          "shot": 8,
+          "status": "warning",
+          "repeatCount": 8,
+          "award": 11,
+          "blocked": false
+        },
+        {
+          "shot": 9,
+          "status": "restricted",
+          "repeatCount": 9,
+          "award": 0,
+          "blocked": true
+        }
+      ],
+      "wallet": 6394
+    },
+    {
+      "kind": "sparse",
+      "warningAt": 12,
+      "restrictedAt": 13,
+      "normalShots": 40,
+      "normalCurvedShots": 20,
+      "normalSameOriginStraightShots": 20,
+      "pauseCannotClearFlight": true,
+      "report": [
+        {
+          "shot": 1,
+          "status": "clear",
+          "repeatCount": 1,
+          "award": 4,
+          "blocked": false
+        },
+        {
+          "shot": 2,
+          "status": "clear",
+          "repeatCount": 2,
+          "award": 5,
+          "blocked": false
+        },
+        {
+          "shot": 3,
+          "status": "clear",
+          "repeatCount": 3,
+          "award": 6,
+          "blocked": false
+        },
+        {
+          "shot": 4,
+          "status": "clear",
+          "repeatCount": 4,
+          "award": 7,
+          "blocked": false
+        },
+        {
+          "shot": 5,
+          "status": "clear",
+          "repeatCount": 5,
+          "award": 8,
+          "blocked": false
+        },
+        {
+          "shot": 6,
+          "status": "clear",
+          "repeatCount": 6,
+          "award": 9,
+          "blocked": false
+        },
+        {
+          "shot": 7,
+          "status": "clear",
+          "repeatCount": 7,
+          "award": 10,
+          "blocked": false
+        },
+        {
+          "shot": 8,
+          "status": "clear",
+          "repeatCount": 8,
+          "award": 11,
+          "blocked": false
+        },
+        {
+          "shot": 9,
+          "status": "clear",
+          "repeatCount": 9,
+          "award": 12,
+          "blocked": false
+        },
+        {
+          "shot": 10,
+          "status": "clear",
+          "repeatCount": 10,
+          "award": 13,
+          "blocked": false
+        },
+        {
+          "shot": 11,
+          "status": "clear",
+          "repeatCount": 11,
+          "award": 14,
+          "blocked": false
+        },
+        {
+          "shot": 12,
+          "status": "warning",
+          "repeatCount": 12,
+          "award": 15,
+          "blocked": false
+        },
+        {
+          "shot": 13,
+          "status": "restricted",
+          "repeatCount": 13,
+          "award": 0,
+          "blocked": true
+        }
+      ],
+      "wallet": 6448
+    }
+  ]
+}

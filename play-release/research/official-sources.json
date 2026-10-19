@@ -1,0 +1,179 @@
+[
+  {
+    "key": "target-api",
+    "url": "https://support.google.com/googleplay/android-developer/answer/11926878?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/11926878?hl=en",
+    "status": 200,
+    "title": "Target API level requirements for Google Play apps - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:04.492779+00:00",
+    "characters": 12198
+  },
+  {
+    "key": "personal-account-testing",
+    "url": "https://support.google.com/googleplay/android-developer/answer/14151465?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/14151465?hl=en",
+    "status": 200,
+    "title": "App testing requirements for new personal developer accounts - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:04.508549+00:00",
+    "characters": 14316
+  },
+  {
+    "key": "preview-assets",
+    "url": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en",
+    "status": 200,
+    "title": "Add preview assets to showcase your app - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:04.432601+00:00",
+    "characters": 24682
+  },
+  {
+    "key": "data-safety",
+    "url": "https://support.google.com/googleplay/android-developer/answer/10787469?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/10787469?hl=en",
+    "status": 200,
+    "title": "Provide information for Google Play's Data safety section - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:04.491952+00:00",
+    "characters": 63000
+  },
+  {
+    "key": "admob-data-disclosure",
+    "url": "https://developers.google.com/admob/android/privacy/play-data-disclosure",
+    "final_url": "https://developers.google.com/admob/android/privacy/play-data-disclosure",
+    "status": 200,
+    "title": "Google Play data disclosure &nbsp;|&nbsp; Android &nbsp;|&nbsp; Google for Developers",
+    "retrieved_utc": "2026-10-18T18:36:04.747208+00:00",
+    "characters": 6164
+  },
+  {
+    "key": "admob-privacy",
+    "url": "https://developers.google.com/admob/android/privacy",
+    "final_url": "https://developers.google.com/admob/android/privacy",
+    "status": 200,
+    "title": "Set up UMP SDK &nbsp;|&nbsp; Android &nbsp;|&nbsp; Google for Developers",
+    "retrieved_utc": "2026-10-18T18:36:04.664578+00:00",
+    "characters": 13052
+  },
+  {
+    "key": "16kb",
+    "url": "https://developer.android.com/guide/practices/page-sizes",
+    "final_url": "https://developer.android.com/guide/practices/page-sizes",
+    "status": 200,
+    "title": "Support 16&nbsp;KB page sizes &nbsp;|&nbsp; Compatibility &nbsp;|&nbsp; Android Developers",
+    "retrieved_utc": "2026-10-18T18:36:05.015174+00:00",
+    "characters": 29374
+  },
+  {
+    "key": "64bit",
+    "url": "https://developer.android.com/google/play/requirements/64-bit",
+    "final_url": "https://developer.android.com/google/play/requirements/64-bit",
+    "status": 200,
+    "title": "Support 64-bit architectures &nbsp;|&nbsp; Compatibility &nbsp;|&nbsp; Android Developers",
+    "retrieved_utc": "2026-10-18T18:36:05.143233+00:00",
+    "characters": 37017
+  },
+  {
+    "key": "app-bundle",
+    "url": "https://developer.android.com/guide/app-bundle",
+    "final_url": "https://developer.android.com/guide/app-bundle",
+    "status": 200,
+    "title": "About Android App Bundles &nbsp;|&nbsp; Other Play guides &nbsp;|&nbsp; Android Developers",
+    "retrieved_utc": "2026-10-18T18:36:05.180348+00:00",
+    "characters": 6744
+  },
+  {
+    "key": "play-signing",
+    "url": "https://support.google.com/googleplay/android-developer/answer/9842756?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/9842756?hl=en",
+    "status": 200,
+    "title": "Use Play App Signing - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:05.162450+00:00",
+    "characters": 12022
+  },
+  {
+    "key": "app-content",
+    "url": "https://support.google.com/googleplay/android-developer/answer/9859455?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/9859455?hl=en",
+    "status": 200,
+    "title": "Prepare your app for review - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:05.246338+00:00",
+    "characters": 11251
+  },
+  {
+    "key": "content-rating",
+    "url": "https://support.google.com/googleplay/android-developer/answer/9859655?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/9859655?hl=en",
+    "status": 200,
+    "title": "Content rating requirements for apps, games, and the ads served on both - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:05.286836+00:00",
+    "characters": 22977
+  },
+  {
+    "key": "privacy-policy",
+    "url": "https://support.google.com/googleplay/android-developer/answer/10144311?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/10144311?hl=en",
+    "status": 200,
+    "title": "User Data - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:05.644635+00:00",
+    "characters": 28349
+  },
+  {
+    "key": "fees",
+    "url": "https://support.google.com/googleplay/android-developer/answer/6112435?hl=en",
+    "final_url": "https://support.google.com/googleplay/android-developer/answer/6112435?hl=en",
+    "status": 200,
+    "title": "Get started with Play Console - Play Console Help",
+    "retrieved_utc": "2026-10-18T18:36:05.822267+00:00",
+    "characters": 4546
+  },
+  {
+    "key": "google-privacy",
+    "url": "https://policies.google.com/privacy",
+    "final_url": "https://policies.google.com/privacy",
+    "status": 200,
+    "title": "Privacy Policy – Privacy &amp; Terms – Google",
+    "retrieved_utc": "2026-10-18T18:36:05.561545+00:00",
+    "characters": 66797
+  },
+  {
+    "key": "google-partners",
+    "url": "https://policies.google.com/technologies/partner-sites",
+    "final_url": "https://policies.google.com/technologies/partner-sites",
+    "status": 200,
+    "title": "How Google uses information from sites or apps that use our services – Privacy &amp; Terms – Google",
+    "retrieved_utc": "2026-10-18T18:36:05.588126+00:00",
+    "characters": 8210
+  },
+  {
+    "key": "reward-policy",
+    "url": "https://support.google.com/admob/answer/7313578?hl=en",
+    "final_url": "https://support.google.com/admob/answer/7313578?hl=en",
+    "status": 200,
+    "title": "Policies for ad units that offer rewards - Google AdMob Help",
+    "retrieved_utc": "2026-10-18T18:36:05.718437+00:00",
+    "characters": 5024
+  },
+  {
+    "key": "admob-app-verification",
+    "url": "https://support.google.com/admob/answer/14538460?hl=en",
+    "final_url": "https://support.google.com/admob/answer/14538460?hl=en",
+    "status": 200,
+    "retrieved_utc": "2026-10-18T18:40:51.415723+00:00",
+    "characters": 3271
+  },
+  {
+    "key": "admob-app-ads-txt",
+    "url": "https://support.google.com/admob/answer/9363762?hl=en",
+    "final_url": "https://support.google.com/admob/answer/9363762?hl=en",
+    "status": 200,
+    "retrieved_utc": "2026-10-18T18:40:52.030403+00:00",
+    "characters": 11109
+  },
+  {
+    "key": "admob-release-notes",
+    "url": "https://developers.google.com/admob/android/rel-notes",
+    "final_url": "https://developers.google.com/admob/android/rel-notes",
+    "status": 200,
+    "retrieved_utc": "2026-10-18T18:44:50.892063+00:00",
+    "characters": 41533
+  }
+]

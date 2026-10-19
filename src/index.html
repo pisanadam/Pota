@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#242b29"><meta name="description" content="POTA. Sabit bir noktadan, parmağınla sürükleyip bırakarak basketbol şutu dene. Top her atıştan sonra otomatik geri gelir."><title>POTA — Bir şut daha.</title><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2215%22%20fill%3D%22%23df8449%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23493628%22%20stroke-width%3D%221.5%22%3E%3Cpath%20d%3D%22M1%2016h30M16%201v30M5%205c15%202%2020%207%2022%2022M27%205C12%207%207%2012%205%2027%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c8 1 11.8 4.8 12.8 12.8M18.4 5.6c-8 1-11.8 4.8-12.8 12.8"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></symbol>
+<symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5zM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+<symbol id="i-muted" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5zM16 9l6 6m0-6-6 6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+</defs></svg>
+<main id="stage" aria-label="Sabit noktadan basketbol şut antrenmanı">
+<canvas id="court" tabindex="0" aria-label="Şut atmak için topu veya sahayı yukarı sürükle ve bırak. Sağa veya sola çekerek yönünü ayarla."></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="brand" aria-hidden="true"><svg><use href="#i-ball"/></svg><span>POTA<span class="dot">.</span></span></div>
+<div id="fps-counter" aria-hidden="true" hidden>— FPS</div>
+<button id="reward-ad-button" class="reward-ad-button" hidden><span id="reward-ad-label">Reklam izle · 2× puan</span><small>5 dakika</small></button>
+<div id="current-points" class="current-points" role="group" aria-label="Harcanabilir puan"><strong id="current-points-value">0</strong><span aria-hidden="true">puan</span></div>
+<button id="menu-button" class="menu-button" aria-label="İstatistikler ve ayarlar" title="İstatistikler ve ayarlar"><span></span><span></span><span></span></button>
+<div id="boost-badge" class="boost-badge" aria-label="Etkin puan çarpanı" hidden><strong id="boost-value">2×</strong><span id="boost-time">5:00</span></div>
+<p id="reward-ad-status" class="reward-ad-status" role="status" aria-live="polite" hidden></p>
+<div id="loading" class="loading"><svg><use href="#i-ball"/></svg><p>Saha hazırlanıyor…</p></div>
+<div id="webgl-error" class="webgl-error" hidden><h1>Saha açılamadı.</h1><p>Android System WebView uygulamasını güncelleyip tekrar dene.</p><button id="retry-game" class="primary-button">Yeniden dene</button></div>
+<div id="intro" class="intro"><svg><use href="#i-arrow"/></svg><p>Topu yukarı sürükle ve bırak.</p><span>Düz kaydır: şut. Kavisli kaydır: falso.</span></div>
+<div id="gesture-cue" class="gesture-cue" aria-hidden="true"><span></span><span></span><span></span></div>
+<div id="score-popup" class="score-popup" aria-hidden="true" hidden></div>
+<div id="fairplay-notice" class="fairplay-notice" role="status" aria-live="polite" hidden><strong id="fairplay-title"></strong><p id="fairplay-message"></p></div>
+<div id="announce" class="visually-hidden" role="status" aria-live="polite"></div>
+</main>
+<dialog id="menu-dialog">
+<header class="dialog-header"><div><p class="eyebrow">BİR ŞUT DAHA.</p><h1>Antrenmanın</h1></div><button id="close-menu" class="close-button" aria-label="Menüyü kapat"><svg><use href="#i-close"/></svg></button></header>
+<div class="mode-picker" role="group" aria-label="Oyun modu"><button id="shoot-mode" aria-pressed="true">Şut modu</button><button id="walk-mode" aria-pressed="false">Gezinme modu</button></div>
+<div class="stat-hero"><strong id="accuracy">0<span>%</span></strong><span>İSABET ORANI</span></div>
+<div class="stats-grid"><div><strong id="made">0</strong><span>Basket</span></div><div><strong id="attempts">0</strong><span>Deneme</span></div><div><strong id="streak">0</strong><span>Şimdiki seri</span></div><div><strong id="best">0</strong><span>En iyi seri</span></div></div>
+<p id="stat-caption" class="stat-caption">İlk şutunla başla.</p>
+<div class="points-summary" aria-label="Puanların"><div><strong id="wallet-balance">0</strong><span>Harcanabilir puan</span></div><div><strong id="total-points">0</strong><span>Toplam kazanılan</span></div></div>
+<button id="open-shop" class="shop-menu-button"><span><svg><use href="#i-ball"/></svg>Puan pazarı</span><span aria-hidden="true">↗</span></button>
+<div class="how-to"><p class="eyebrow">SADECE SÜRÜKLE VE BIRAK.</p><p>Yukarı çekme mesafesi atış gücünü belirler. Sağa veya sola çekerek yön ver. Parmağınla kavis çizerek falso ekle; panyayı hedefleyerek sektir. Saydam ok ve izler, topun uçuşunu ve sekmesini gösterir. Her atıştan sonra top otomatik olarak eline döner. Gezinme modunda sahayı sürükleyerek dolaş; şut moduna dönünce bulunduğun yerden atış yap.</p><p class="tip">Orta uzunlukta, düz bir hareketle başla. Top kısa düşerse biraz daha uzun sürükle.</p><p class="points-tip">İkilik basket 2, üçlük basket 3 puan. Art arda basketlerde seri bonusu büyür: ikinci basket +1, üçüncü +2, dördüncü +3… Kaçırınca bonus sıfırlanır. Puanlarınla top, iz, file veya zincir, çember, panya ve ortam al.</p></div>
+<div class="graphics-setting"><label for="performance-preference">Oyun tercihi</label><select id="performance-preference" aria-describedby="performance-description"><option value="smooth">Akıcılık</option><option value="balanced">Dengeli</option><option value="graphics">Grafik</option></select><p id="performance-description">Akıcılık ekranına göre 60/120 FPS, Dengeli destekleyen ekranlarda 90 FPS hedefler. Grafik, daha yüksek çözünürlük ve ayrıntı ile 60 FPS hedefler. Cihazın gücüne göre görüntü otomatik ayarlanır.</p></div>
+<div class="fps-setting"><button id="fps-button" class="setting-button fps-mode-button" aria-pressed="false"><span>FPS göstergesi kapalı</span><i class="setting-switch" aria-hidden="true"></i></button></div>
+<div class="settings-row"><button id="sound-button" class="setting-button" aria-pressed="true"><svg><use href="#i-sound"/></svg><span>Ses açık</span></button><button id="privacy-button" class="setting-button" hidden>Reklam gizliliği</button><button id="privacy-policy-button" class="setting-button" hidden>Gizlilik politikası</button></div>
+<div class="developer-setting"><button id="developer-toggle" class="setting-button" aria-pressed="false" aria-controls="developer-panel">Geliştirici modu kapalı</button><section id="developer-panel" hidden><p>Elle seçilen ayarlar otomatik cihaz seçiminin yerine geçer.</p><div class="graphics-setting"><label for="graphics-quality">Grafik kalitesi</label><select id="graphics-quality"><option value="auto">Otomatik</option><option value="balanced">Dengeli</option><option value="high">Yüksek</option><option value="ultra">Ultra</option></select></div><div class="graphics-setting"><label for="resolution-quality">Çözünürlük</label><select id="resolution-quality"><option value="auto">Otomatik</option><option value="low">Düşük</option><option value="medium">Orta</option><option value="high">Yüksek</option><option value="max">Maksimum</option></select></div><p id="developer-status"></p></section></div>
+<button id="resume-button" class="primary-button">Sahaya dön <span>↗</span></button>
+<div class="dialog-footer"><span>Bu cihazda otomatik kaydedilir.</span><button id="reset-stats">Sıfırla</button></div>
+<div id="reset-confirm" class="reset-confirm" hidden><p>Bütün şut istatistikleri silinsin mi?</p><div><button id="cancel-reset">Vazgeç</button><button id="confirm-reset">Evet, sıfırla</button></div></div>
+</dialog>
+<dialog id="shop-dialog" class="shop-dialog" aria-labelledby="shop-title">
+<header class="dialog-header"><div><p class="eyebrow">HER BASKET BİR ADIM.</p><h1 id="shop-title">Puan pazarı</h1></div><button id="close-shop" class="close-button" aria-label="Puan pazarını kapat"><svg><use href="#i-close"/></svg></button></header>
+<div class="shop-wallet"><div><span>Harcanabilir puan</span><strong id="shop-balance">0</strong></div><p>İkilik <b>+2</b> · Üçlük <b>+3</b><br>Seri bonusu <b>+1, +2, +3…</b></p></div>
+<p class="shop-intro">Sahada kazan, kendi tarzınla oyna.</p>
+<div class="shop-tabs" role="tablist" aria-label="Kozmetik kategorisi">
+<button id="shop-tab-balls" role="tab" aria-selected="true" aria-controls="shop-items" tabindex="0" data-shop-tab="ball">Toplar <span class="shop-tab-count"></span></button>
+<button id="shop-tab-particles" role="tab" aria-selected="false" aria-controls="shop-items" tabindex="-1" data-shop-tab="particle">İzler <span class="shop-tab-count"></span></button>
+<button id="shop-tab-nets" role="tab" aria-selected="false" aria-controls="shop-items" tabindex="-1" data-shop-tab="net">Fileler <span class="shop-tab-count"></span></button>
+<button id="shop-tab-rims" role="tab" aria-selected="false" aria-controls="shop-items" tabindex="-1" data-shop-tab="rim">Çemberler <span class="shop-tab-count"></span></button>
+<button id="shop-tab-backboards" role="tab" aria-selected="false" aria-controls="shop-items" tabindex="-1" data-shop-tab="backboard">Panyalar <span class="shop-tab-count"></span></button>
+<button id="shop-tab-environments" role="tab" aria-selected="false" aria-controls="shop-items" tabindex="-1" data-shop-tab="environment">Ortamlar <span class="shop-tab-count"></span></button>
+</div>
+<p id="shop-catalog-summary" class="shop-catalog-summary"></p>
+<div id="shop-catalog" class="shop-catalog"><div id="shop-items" class="shop-items" role="tabpanel" aria-labelledby="shop-tab-balls"></div></div>
+<p id="shop-status" class="shop-status" role="status" aria-live="polite" aria-atomic="true"></p>
+<p class="shop-footnote">Alışveriş yalnızca oyun puanıyla yapılır. Seçimlerin bu cihazda kaydedilir.</p>
+</dialog>
+<script src="../vendor/three.min.js"></script><script src="physics.js"></script><script src="net.js"></script><script src="graphics.js"></script><script src="weather.js"></script><script src="scene.js"></script><script src="compat-scene.js"></script><script src="audio-samples.js"></script><script src="audio.js"></script><script src="shop.js"></script><script src="rewards.js"></script><script src="fairplay.js"></script><script src="rewarded.js"></script><script src="game.js"></script>
+</body></html>

@@ -1,0 +1,7 @@
+<tr-TR>
+• Cihazına göre otomatik grafik ve çözünürlük ayarı.
+• Ekrana ve donanıma göre 60/120 FPS hedefi; akıcılık veya grafik tercihi.
+• Geliştirici modunda ayrıntılı görüntü ayarları.
+• Çizim modu kaldırıldı, performans iyileştirildi.
+• İsteğe bağlı ödüllü reklamlarla 5 dakikalık 2x/3x puan çarpanı.
+</tr-TR>

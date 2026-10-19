@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "method": "Node same-context deterministic seed, 1000 warmup + median of 5 × 2000 updates; CPU update only, not device FPS",
+  "baselineSha256": "7ab07b506f57129fa894c88a2390dea4a8a8b42303c6e25c2be4dcae10662439",
+  "optimizedSha256": "5f4588a860571f23d0df3bbcc33b16c98246a6e34bcedff01c646e43d3253495",
+  "maxPositionDeviationMetres": 0,
+  "staticCacheBytes": 52800,
+  "perFrameRangeAllocations": 0,
+  "cpu": [
+    {
+      "environment": "gym",
+      "quality": "ultra",
+      "beforeMs": 0.0030457259999999453,
+      "afterMs": 0.0012452869999999621,
+      "reductionPercent": 59.11362348418786
+    },
+    {
+      "environment": "street-court",
+      "quality": "ultra",
+      "beforeMs": 0.11652595699999994,
+      "afterMs": 0.013877163500000051,
+      "reductionPercent": 88.09092509748703
+    },
+    {
+      "environment": "alpine-court",
+      "quality": "ultra",
+      "beforeMs": 0.07000160199999982,
+      "afterMs": 0.015233590499999991,
+      "reductionPercent": 78.23822589088742
+    },
+    {
+      "environment": "desert-court",
+      "quality": "ultra",
+      "beforeMs": 0.21718253950000008,
+      "afterMs": 0.032989465999999995,
+      "reductionPercent": 84.8102586534126
+    }
+  ],
+  "uploadExample": {
+    "environment": "gym",
+    "quality": "balanced",
+    "beforeFloats": 6600,
+    "afterFloats": 63
+  }
+}

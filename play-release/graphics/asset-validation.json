@@ -1,0 +1,16 @@
+{
+  "icon-512.png": {
+    "width": 512,
+    "height": 512,
+    "mode": "RGBA",
+    "bytes": 89528,
+    "origin": "Original programmatic brand artwork. Not a gameplay screenshot."
+  },
+  "feature-1024x500.png": {
+    "width": 1024,
+    "height": 500,
+    "mode": "RGB",
+    "bytes": 94136,
+    "origin": "Original programmatic brand artwork. Not a gameplay screenshot."
+  }
+}

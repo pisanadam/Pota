@@ -1,0 +1,37 @@
+# Local machine settings and caches
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+**/.gradle/
+**/build/
+**/local.properties
+**/.cxx/
+**/.externalNativeBuild/
+__pycache__/
+*.pyc
+node_modules/
+
+# Private credentials and signing material
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+**/private-export/
+**/IMZA-BILGILERI.txt
+android/signing/*
+!android/signing/upload-certificate.pem
+
+# Downloaded Android tools; keep the reproducible fetch script
+android/tools/*
+!android/tools/fetch.sh
+
+# Local exports and private recording evidence
+*.apk
+*.aab
+*.zip
+*.mp4
+qa/macro-video-evidence/

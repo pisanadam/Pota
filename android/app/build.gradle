@@ -1,0 +1,84 @@
+plugins { id 'com.android.application' }
+
+// Set private production IDs via environment or ~/.gradle/gradle.properties.
+// A release without both real IDs has ads disabled; debug uses Google's test IDs.
+def productionAppId = providers.gradleProperty('POTA_ADMOB_APP_ID').orElse(providers.environmentVariable('POTA_ADMOB_APP_ID')).getOrElse('')
+def productionRewardId = providers.gradleProperty('POTA_ADMOB_REWARDED_ID').orElse(providers.environmentVariable('POTA_ADMOB_REWARDED_ID')).getOrElse('')
+def privacyUrl = providers.gradleProperty('POTA_PRIVACY_POLICY_URL').orElse(providers.environmentVariable('POTA_PRIVACY_POLICY_URL')).getOrElse('')
+if (!(privacyUrl ==~ /https:\/\/[^\s"<>]+/)) privacyUrl = ''
+def googleTestAppId = 'ca-app-pub-3940256099942544~3347511713'
+def googleTestRewardId = 'ca-app-pub-3940256099942544/5224354917'
+def configured = (productionAppId ==~ /ca-app-pub-\d{16}~\d{10}/) && (productionRewardId ==~ /ca-app-pub-\d{16}\/\d{10}/) && !productionAppId.startsWith('ca-app-pub-3940256099942544') && !productionRewardId.startsWith('ca-app-pub-3940256099942544')
+
+android {
+    namespace 'com.pota.court'
+    compileSdk 36
+    buildToolsVersion '36.0.0'
+    defaultConfig {
+        applicationId 'com.pota.court'
+        minSdk 23
+        targetSdk 36
+        versionCode 17
+        versionName '2.0.3'
+        buildConfigField 'String', 'PRIVACY_POLICY_URL', '"' + privacyUrl + '"'
+        manifestPlaceholders = [admobAppId: configured ? productionAppId : googleTestAppId]
+    }
+    flavorDimensions += 'ads'
+    productFlavors {
+        offline {
+            dimension 'ads'
+            buildConfigField 'boolean', 'ADS_ENABLED', 'false'
+            buildConfigField 'String', 'REWARDED_AD_UNIT', '""'
+        }
+        monetized {
+            dimension 'ads'
+            buildConfigField 'boolean', 'ADS_ENABLED', configured.toString()
+            buildConfigField 'String', 'REWARDED_AD_UNIT', '"' + (configured ? productionRewardId : '') + '"'
+        }
+    }
+    signingConfigs {
+        retained {
+            storeFile file('../signing/pota-local.jks')
+            storePassword providers.gradleProperty('POTA_STORE_PASSWORD').orElse(providers.environmentVariable('POTA_STORE_PASSWORD')).getOrElse('android')
+            keyAlias providers.gradleProperty('POTA_KEY_ALIAS').orElse(providers.environmentVariable('POTA_KEY_ALIAS')).getOrElse('pota-local')
+            keyPassword providers.gradleProperty('POTA_KEY_PASSWORD').orElse(providers.environmentVariable('POTA_KEY_PASSWORD')).getOrElse('android')
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing true
+            enableV4Signing false
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.retained
+            applicationIdSuffix '.debug'
+            manifestPlaceholders = [admobAppId: googleTestAppId]
+            buildConfigField 'boolean', 'ADS_ENABLED', 'true'
+            buildConfigField 'boolean', 'ADS_TEST_MODE', 'true'
+            buildConfigField 'String', 'REWARDED_AD_UNIT', '"' + googleTestRewardId + '"'
+        }
+        release {
+            signingConfig signingConfigs.retained
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'boolean', 'ADS_TEST_MODE', 'false'
+        }
+    }
+    buildFeatures { buildConfig true }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_11; targetCompatibility JavaVersion.VERSION_11 }
+    packaging { resources { excludes += ['META-INF/DEPENDENCIES', 'META-INF/AL2.0', 'META-INF/LGPL2.1'] } }
+    bundle { language { enableSplit = false } }
+}
+
+dependencies {
+    monetizedImplementation 'com.google.android.gms:play-services-ads:24.9.0'
+    monetizedImplementation 'com.google.android.ump:user-messaging-platform:4.0.0'
+}
+
+// Never offer an unconfigured monetized release as a production artifact.
+androidComponents {
+    beforeVariants(selector().withFlavor('ads', 'monetized').withBuildType('release')) { variant ->
+        variant.enable = configured
+    }
+}

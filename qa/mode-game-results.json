@@ -1,0 +1,276 @@
+{
+  "passed": true,
+  "implementation": "Actual game.js/UI/storage/physics with controlled RAF and scene/audio fixtures; actual Canvas2D fallback",
+  "framePacing": [
+    {
+      "mode": "smooth",
+      "hz": 60,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000014,
+      "fps": "60 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "smooth",
+      "hz": 90,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000004,
+      "fps": "60 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "smooth",
+      "hz": 120,
+      "target": 120,
+      "rendered": 480,
+      "measuredFPS": 120,
+      "physicsSteps": 960,
+      "elapsed": 3.999999999999965,
+      "fps": "120 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "smooth",
+      "hz": 144,
+      "target": 120,
+      "rendered": 480,
+      "measuredFPS": 120,
+      "physicsSteps": 960,
+      "elapsed": 3.9999999999999836,
+      "fps": "120 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "balanced",
+      "hz": 60,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000014,
+      "fps": "60 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "balanced",
+      "hz": 90,
+      "target": 90,
+      "rendered": 360,
+      "measuredFPS": 90,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000027,
+      "fps": "90 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "balanced",
+      "hz": 120,
+      "target": 90,
+      "rendered": 360,
+      "measuredFPS": 90,
+      "physicsSteps": 960,
+      "elapsed": 3.9999999999999902,
+      "fps": "90 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "balanced",
+      "hz": 144,
+      "target": 90,
+      "rendered": 360,
+      "measuredFPS": 90,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000004,
+      "fps": "90 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "graphics",
+      "hz": 60,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000014,
+      "fps": "60 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "graphics",
+      "hz": 90,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000004,
+      "fps": "60 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "graphics",
+      "hz": 120,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000014,
+      "fps": "60 FPS",
+      "singleRAF": true
+    },
+    {
+      "mode": "graphics",
+      "hz": 144,
+      "target": 60,
+      "rendered": 240,
+      "measuredFPS": 60,
+      "physicsSteps": 960,
+      "elapsed": 4.000000000000008,
+      "fps": "60 FPS",
+      "singleRAF": true
+    }
+  ],
+  "switching": {
+    "switches": [
+      {
+        "mode": "balanced",
+        "target": 90,
+        "rendered": 180,
+        "fps": "90 FPS"
+      },
+      {
+        "mode": "smooth",
+        "target": 120,
+        "rendered": 240,
+        "fps": "120 FPS"
+      },
+      {
+        "mode": "graphics",
+        "target": 60,
+        "rendered": 120,
+        "fps": "60 FPS"
+      }
+    ],
+    "display": [
+      {
+        "hz": 60,
+        "target": 60
+      },
+      {
+        "hz": 90,
+        "target": 90
+      },
+      {
+        "hz": 120,
+        "target": 90
+      },
+      {
+        "hz": 144,
+        "target": 90
+      }
+    ],
+    "pausedSelection": true,
+    "singleRAF": true
+  },
+  "settings": {
+    "options": [
+      {
+        "value": "smooth",
+        "label": "Akıcılık"
+      },
+      {
+        "value": "balanced",
+        "label": "Dengeli"
+      },
+      {
+        "value": "graphics",
+        "label": "Grafik"
+      }
+    ],
+    "wallet": 5432,
+    "headerLeftOfSettings": true,
+    "cosmetics": 12,
+    "persisted": "graphics",
+    "reload": {
+      "mode": "graphics",
+      "target": 60,
+      "value": "graphics",
+      "balance": 5432
+    }
+  },
+  "fallback": {
+    "cases": [
+      {
+        "mode": "smooth",
+        "hz": 60,
+        "target": 60
+      },
+      {
+        "mode": "smooth",
+        "hz": 90,
+        "target": 60
+      },
+      {
+        "mode": "smooth",
+        "hz": 120,
+        "target": 120
+      },
+      {
+        "mode": "smooth",
+        "hz": 144,
+        "target": 120
+      },
+      {
+        "mode": "balanced",
+        "hz": 60,
+        "target": 60
+      },
+      {
+        "mode": "balanced",
+        "hz": 90,
+        "target": 90
+      },
+      {
+        "mode": "balanced",
+        "hz": 120,
+        "target": 90
+      },
+      {
+        "mode": "balanced",
+        "hz": 144,
+        "target": 90
+      },
+      {
+        "mode": "graphics",
+        "hz": 60,
+        "target": 60
+      },
+      {
+        "mode": "graphics",
+        "hz": 90,
+        "target": 60
+      },
+      {
+        "mode": "graphics",
+        "hz": 120,
+        "target": 60
+      },
+      {
+        "mode": "graphics",
+        "hz": 144,
+        "target": 60
+      }
+    ],
+    "lit": 1424475,
+    "pipeline": "canvas2d-compatibility",
+    "actualSwipe": true,
+    "basketAward": 4,
+    "headerWallet": 5436,
+    "scoreOnce": true
+  }
+}

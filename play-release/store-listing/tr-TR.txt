@@ -1,0 +1,27 @@
+UYGULAMA ADI
+POTA — Bir Şut Daha
+
+KISA AÇIKLAMA
+Parmağınla şut at, falso ver, sahaları keşfet. Sade ve fizik tabanlı basketbol.
+
+TAM AÇIKLAMA
+Bir açı bul. Parmağını kaydır. Bir şut daha at.
+
+POTA, dokunarak oynanan sade bir 3B basketbol antrenmanı oyunudur. Topu sürükleyip bırakarak şut at; kavisli bir hareketle falso ver, panyayı kullan ve farklı uzaklıklardan kendi atışını geliştir. Top, atışından sonra yeniden eline gelir.
+
+SADE KONTROL, HİSSEDİLEN FİZİK
+Topun zemine, çembere ve panyaya çarpmasını izle. Hareket eden fileler, topun bulunduğu yere göre duyulan sesler ve şut yönünü gösteren saydam nişan oku, her denemeyi takip etmene yardımcı olur. Gezinme modunda yeni bir atış noktası seçebilirsin.
+
+HER BASKET BİR ADIM
+İki sayılık ve üç sayılık basketlerle oyun puanı kazan. İsabet serilerini sürdür, atış istatistiklerini takip et. Kazandığın puanlarla farklı toplar, parçacık efektleri, fileler, çemberler, panyalar ve ortamlar aç. Oyun puanları yalnızca oyun içinde kullanılır; gerçek para değeri taşımaz.
+
+FARKLI SAHALAR, FARKLI HAVA
+Kapalı salonlardan sokak sahalarına, kumlu çölden karlı dağlara uzanan ortamları dene. Ortama göre yağmur, kar, uçuşan kum ve yansımalar sahaya eşlik eder.
+
+CİHAZINA UYUM SAĞLAYAN GÖRÜNTÜ
+Oyun ilk açılışta grafik ve çözünürlüğü cihazına göre ayarlar. Ayarlardan Akıcılık, Dengeli veya Grafik tercihini seçebilirsin. Grafik tercihinde yüksek ayrıntı ve 60 FPS, Dengeli tercihinde destekleyen ekranlarda 90 FPS, Akıcılık tercihinde ekrana göre 60/120 FPS hedeflenir. Gerçekleşen kare hızı cihazına, ekranına ve çalışma koşullarına bağlıdır.
+
+İNTERNETSİZ ANTRENMAN
+Oyun internet bağlantısı gerektirmez. Atışların, oyun puanların ve kozmetik seçimlerin cihazında saklanır. Bir hesap açmadan sahaya gir ve kendi ritminde oyna.
+
+POTA. Bir şut daha.
