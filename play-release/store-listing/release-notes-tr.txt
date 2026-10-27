@@ -2,6 +2,6 @@
 • Yeni: tek seferlik puan ödüllü 16 hedef (menü > Hedefler).
 • Sahanın öbür yarısındaki potaya da atış yapabilirsin.
 • Gezinme modunda panyanın arkasına geçilemez.
-• Seri bonusu basket başına en fazla +10.
+• Seri bonusu basket başına en fazla +10; üçlükte her adımda +2 (en fazla +20).
 • Çevrimdışı, reklam SDK'sı içermeyen Android sürümü.
 </tr-TR>

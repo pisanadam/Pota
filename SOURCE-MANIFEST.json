@@ -1,20 +1,20 @@
 {
   "versionName": "2.0.4",
   "versionCode": 18,
-  "createdUtc": "2026-10-27T04:54:20.434992+00:00",
+  "createdUtc": "2026-10-27T05:15:56.824496+00:00",
   "sourceIdentity": "Exact current game/build source bytes; README and release documentation updated separately. Packaging does not change product source.",
   "files": {
     "src/audio-samples.js": "c3f026e5b1ded8c69094972c2c28c81a5e0e2c3a097216826792ccbe8fa66464",
     "src/audio.js": "60bc21fa65d80c9aac40db74e80b38cbdfca88ad7fc7cabaee9566801ecbc402",
     "src/compat-scene.js": "538621bbe5f9b434274bd96e22a5a915226b2c9f94482cdc932d14d50658356f",
     "src/fairplay.js": "bbd48b44a928143217d4812a468745b949aeb287c9812a74afccd339df79e77c",
-    "src/game.js": "4b69d5db9cdc84ca5df6b13a071c09010589b7e799a09edea6158a3ef1c6f988",
+    "src/game.js": "fa41cc9dc065aba8664a6d59a0fba6f15595a833f0ef427b1a22012ca6907d6c",
     "src/graphics.js": "ce120df83bba1c8f68f0843385e5223033f62addf37b05fc6e000bdb3f948e3f",
-    "src/index.html": "21b37b4fea5c1dd5e194b979a052ac6831892454748d1be54cc47f4d5ffd2fa3",
+    "src/index.html": "24280c27ac2417bf1f9195a05d7981a20db39bc82100b9f972d5bb470dd24c27",
     "src/net.js": "f1e2bec7234b3787f6e34700bb1682e0b5c1fc393e3ba51ba9964ba80e4c1f7a",
     "src/physics.js": "555dd3206f11fb5261184c5023f32a5771f7b634383278b24cc803a427ec119b",
     "src/rewarded.js": "d8b5c16e19cdee63b32973f6edf4ce2ce3cf599b8e011895968945303f95b4a3",
-    "src/rewards.js": "af7ff4462df224b2fe6b0047d8e4d5cf205f715e59fca95af16bb75930ebdef8",
+    "src/rewards.js": "6ecb2d982fd86717aa3befb5e6d46290199b35a79e18e0d0b168d6a21a042e6f",
     "src/scene.js": "868ef4651039170d073414bad7ec875a198c112d3e6c31342bb2e93e004744dc",
     "src/shop.js": "bb1a5f3a593c61e95737e5203b1469ffca3793bfacb62410900e3cfe13d17258",
     "src/style.css": "ce58225abe2d824dc694e018b2d9c003417929399b0f48186bff8dc71dd83a03",
@@ -40,7 +40,7 @@
     "vendor/audio/swish2.wav": "7181c60cc38e380782a3448c948ec6f9060c2586d171f9662a0cdbee8ab6156c",
     "vendor/three.min.js": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
     "android/app/src/main/AndroidManifest.xml": "c0b14aadd30023fb9cd3af93f89086f9c2df5452a7102ea03ba8d3f7354de105",
-    "android/app/src/main/assets/index.html": "6a88aad48309b7906e424622108aaf7d25de3520db4f5670b83a6c88d9cfb1e3",
+    "android/app/src/main/assets/index.html": "0ab1f2a2ecf9615f75193badb30e6f2774c199382d0fc180dfe2eb98e2403567",
     "android/app/src/main/java/com/pota/court/MainActivity.java": "be5ae2764561fb36f7b1013c002f55f6bdf23de2593a747423d5e270f67927dd",
     "android/app/src/main/res/drawable/ic_launcher.xml": "0e740ab3e7e210618b21010318c3e3ef643419b982bed7374805f9793c389013",
     "android/app/src/main/res/drawable/ic_launcher_foreground.xml": "33363b8042dc565046500022c248258b6a56a8d9ea3581fec54c1e5762da3881",
@@ -87,6 +87,6 @@
     "qa/macro-game-results.json": "423060cbf5b1b0d2507f129a7aaf4d04ee80cc46b54fd5a7785318af8a6047fd",
     "src/goals.js": "d9f6745882504d5a7210ff8c514bd79fb649e901356aad93bca8236e9ae66c32"
   },
-  "gameAssetSha256": "6a88aad48309b7906e424622108aaf7d25de3520db4f5670b83a6c88d9cfb1e3",
+  "gameAssetSha256": "0ab1f2a2ecf9615f75193badb30e6f2774c199382d0fc180dfe2eb98e2403567",
   "signerSha256": "63bb7a92b5f55cd58f93d54bc3008a14a8f1adc92a2011bab97df1bd5f014a81"
 }

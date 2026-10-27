@@ -660,7 +660,7 @@
 <div class="points-summary" aria-label="Puanların"><div><strong id="wallet-balance">0</strong><span>Harcanabilir puan</span></div><div><strong id="total-points">0</strong><span>Toplam kazanılan</span></div></div>
 <button id="open-shop" class="shop-menu-button"><span><svg><use href="#i-ball"/></svg>Puan pazarı</span><span aria-hidden="true">↗</span></button>
 <details id="goals" class="goals"><summary><span>Hedefler</span><span id="goals-count" class="goals-count">0/0</span></summary><ol id="goals-list" class="goals-list"></ol><p class="goals-note">Her hedef bir kez ödül verir. Ödüller harcanabilir puanına eklenir.</p></details>
-<div class="how-to"><p class="eyebrow">SADECE SÜRÜKLE VE BIRAK.</p><p>Yukarı çekme mesafesi atış gücünü belirler. Sağa veya sola çekerek yön ver. Parmağınla kavis çizerek falso ekle; panyayı hedefleyerek sektir. Saydam ok ve izler, topun uçuşunu ve sekmesini gösterir. Her atıştan sonra top otomatik olarak eline döner. Gezinme modunda sahayı sürükleyerek dolaş; şut moduna dönünce bulunduğun yerden, o yarı sahadaki potaya atış yap.</p><p class="tip">Orta uzunlukta, düz bir hareketle başla. Top kısa düşerse biraz daha uzun sürükle.</p><p class="points-tip">İkilik basket 2, üçlük basket 3 puan. Art arda basketlerde seri bonusu büyür: ikinci basket +1, üçüncü +2, dördüncü +3… en fazla +10. Kaçırınca bonus sıfırlanır. Hedefleri tamamlayarak ek puan kazanırsın. Puanlarınla top, iz, file veya zincir, çember, panya ve ortam al.</p></div>
+<div class="how-to"><p class="eyebrow">SADECE SÜRÜKLE VE BIRAK.</p><p>Yukarı çekme mesafesi atış gücünü belirler. Sağa veya sola çekerek yön ver. Parmağınla kavis çizerek falso ekle; panyayı hedefleyerek sektir. Saydam ok ve izler, topun uçuşunu ve sekmesini gösterir. Her atıştan sonra top otomatik olarak eline döner. Gezinme modunda sahayı sürükleyerek dolaş; şut moduna dönünce bulunduğun yerden, o yarı sahadaki potaya atış yap.</p><p class="tip">Orta uzunlukta, düz bir hareketle başla. Top kısa düşerse biraz daha uzun sürükle.</p><p class="points-tip">İkilik basket 2, üçlük basket 3 puan. Art arda basketlerde seri bonusu büyür: ikinci basket +1, üçüncü +2, dördüncü +3… en fazla +10. Üçlüklerde seri bonusu her adımda +2 artar: +2, +4, +6… en fazla +20. Kaçırınca bonus sıfırlanır. Hedefleri tamamlayarak ek puan kazanırsın. Puanlarınla top, iz, file veya zincir, çember, panya ve ortam al.</p></div>
 <div class="graphics-setting"><label for="performance-preference">Oyun tercihi</label><select id="performance-preference" aria-describedby="performance-description"><option value="smooth">Akıcılık</option><option value="balanced">Dengeli</option><option value="graphics">Grafik</option></select><p id="performance-description">Akıcılık ekranına göre 60/120 FPS, Dengeli destekleyen ekranlarda 90 FPS hedefler. Grafik, daha yüksek çözünürlük ve ayrıntı ile 60 FPS hedefler. Cihazın gücüne göre görüntü otomatik ayarlanır.</p></div>
 <div class="fps-setting"><button id="fps-button" class="setting-button fps-mode-button" aria-pressed="false"><span>FPS göstergesi kapalı</span><i class="setting-switch" aria-hidden="true"></i></button></div>
 <div class="settings-row"><button id="sound-button" class="setting-button" aria-pressed="true"><svg><use href="#i-sound"/></svg><span>Ses açık</span></button><button id="privacy-button" class="setting-button" hidden>Reklam gizliliği</button><button id="privacy-policy-button" class="setting-button" hidden>Gizlilik politikası</button></div>
@@ -671,7 +671,7 @@
 </dialog>
 <dialog id="shop-dialog" class="shop-dialog" aria-labelledby="shop-title">
 <header class="dialog-header"><div><p class="eyebrow">HER BASKET BİR ADIM.</p><h1 id="shop-title">Puan pazarı</h1></div><button id="close-shop" class="close-button" aria-label="Puan pazarını kapat"><svg><use href="#i-close"/></svg></button></header>
-<div class="shop-wallet"><div><span>Harcanabilir puan</span><strong id="shop-balance">0</strong></div><p>İkilik <b>+2</b> · Üçlük <b>+3</b><br>Seri bonusu <b>+1, +2 … +10</b></p></div>
+<div class="shop-wallet"><div><span>Harcanabilir puan</span><strong id="shop-balance">0</strong></div><p>İkilik <b>+2</b> · Üçlük <b>+3</b><br>Seri bonusu <b>+1 … +10</b><br>Üçlükte seri <b>+2 … +20</b></p></div>
 <p class="shop-intro">Sahada kazan, kendi tarzınla oyna.</p>
 <div class="shop-tabs" role="tablist" aria-label="Kozmetik kategorisi">
 <button id="shop-tab-balls" role="tab" aria-selected="true" aria-controls="shop-items" tabindex="0" data-shop-tab="ball">Toplar <span class="shop-tab-count"></span></button>
@@ -5968,18 +5968,19 @@ window.createCourtAudio = function createCourtAudio() {
  'use strict';
  // A capped streak bonus keeps long streaks rewarding without letting one
  // session outpace every cosmetic price: +1, +2 … +10 per basket at most.
- const MAX_STREAK_BONUS=10;
+ // Three-pointers grow the bonus by 2 per streak step: +2, +4 … +20.
+ const MAX_STREAK_BONUS=10,THREE_STREAK_STEP=2;
  function calculate(state,basePoints,made,multiplier=1){
   const previous=Number.isSafeInteger(state.streak)&&state.streak>0?state.streak:0;
   const best=Number.isSafeInteger(state.best)&&state.best>0?state.best:0;
   const streak=made?Math.min(Number.MAX_SAFE_INTEGER-3,previous+1):0;
   const base=basePoints===3?3:2;
-  const bonus=made?Math.min(MAX_STREAK_BONUS,Math.max(0,streak-1)):0;
+  const bonus=made?Math.min(MAX_STREAK_BONUS,Math.max(0,streak-1))*(base===3?THREE_STREAK_STEP:1):0;
   multiplier=multiplier===2||multiplier===3?multiplier:1;
   const unmultipliedPoints=made?base+bonus:0;
   return{streak,best:Math.max(best,streak),basePoints:made?base:0,bonus,multiplier,unmultipliedPoints,points:Math.min(Number.MAX_SAFE_INTEGER,unmultipliedPoints*multiplier)};
  }
- global.PotaRewards=Object.freeze({calculate,MAX_STREAK_BONUS});
+ global.PotaRewards=Object.freeze({calculate,MAX_STREAK_BONUS,THREE_STREAK_STEP});
 })(typeof window!=='undefined'?window:globalThis);
 
 </script><script>
@@ -6410,7 +6411,7 @@ function updateStats(){
  const rate=stats.attempts?Math.round(100*stats.made/stats.attempts):0;
  $('accuracy').innerHTML=rate+'<span>%</span>';
  for(const key of ['made','attempts','streak','best'])$(key).textContent=stats[key];
- $('stat-caption').textContent=stats.streak?'Sonraki basket +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)+' seri bonusu.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
+ $('stat-caption').textContent=stats.streak?'Sonraki basket +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)+' seri bonusu, üçlükte +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)*window.PotaRewards.THREE_STREAK_STEP+'.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
  $('sound-button').setAttribute('aria-pressed',String(stats.sound));
  $('sound-button').innerHTML='<svg><use href="#i-'+(stats.sound?'sound':'muted')+'"/></svg><span>Ses '+(stats.sound?'açık':'kapalı')+'</span>';
  $('performance-preference').value=stats.performancePreference;

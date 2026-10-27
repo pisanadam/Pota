@@ -1,6 +1,6 @@
 {
-  "source_asset_sha256": "6a88aad48309b7906e424622108aaf7d25de3520db4f5670b83a6c88d9cfb1e3",
-  "source_asset_bytes": 1593885,
+  "source_asset_sha256": "0ab1f2a2ecf9615f75193badb30e6f2774c199382d0fc180dfe2eb98e2403567",
+  "source_asset_bytes": 1594248,
   "capture": "Chromium (SwiftShader WebGL) rendering of the packed game asset by qa/capture-screenshots.js; CSS viewport 360x640, deviceScaleFactor 3. Not a physical phone capture.",
   "quality": "Default automatic graphics and resolution. No quality override.",
   "seed": "Shots 01-03: fresh save with sound off; shots, basket, score and goal notice come from real swipes. Shot 04: desert court added to the local inventory before loading. Native ads unavailable and hidden.",
@@ -11,32 +11,32 @@
       "description": "Fresh start, classic gym, default shot view.",
       "width": 1080,
       "height": 1920,
-      "bytes": 916271,
-      "sha256": "3863a2c16b5ab05b08644874ed02335efbf669d1fe98f48a6ce0d059a8140f2c"
+      "bytes": 916431,
+      "sha256": "93e0fb197531ada2a778094517bd9aa4eb6b1c0397cc12e8afd66258d2517874"
     },
     {
       "file": "02-first-goal.png",
       "description": "First basket of a fresh game and its goal reward notice.",
       "width": 1080,
       "height": 1920,
-      "bytes": 461670,
-      "sha256": "c7009ce5dec0c31890bf3170a66b3af495508b49c9636e8123424721842e185f"
+      "bytes": 461895,
+      "sha256": "f5ac7dd0754baf56f672b56b107d6b992ba20db1c0e1ba461234f8b2ebb085fc"
     },
     {
       "file": "03-goals.png",
       "description": "Menu goal list after the shots above.",
       "width": 1080,
       "height": 1920,
-      "bytes": 305572,
-      "sha256": "068569a0e698009218d1f1bfda9aaee12395a3615f71d14e8adba67ca3eefb35"
+      "bytes": 305476,
+      "sha256": "c7bad148832318ba42005492b0b1f4a2d19d1ac85a3f9e08380e123193821b72"
     },
     {
       "file": "04-desert-court.png",
       "description": "Desert court with the aim arrow while dragging.",
       "width": 1080,
       "height": 1920,
-      "bytes": 1136214,
-      "sha256": "b994e261c607119eb6ddf602ae43aa62ca065ad2b02ad66728918fb1388d23da"
+      "bytes": 1137129,
+      "sha256": "e926381e56ebc64a5792543a97072de60802da0b5400664f5278fc23422cebdb"
     }
   ]
 }

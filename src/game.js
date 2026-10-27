@@ -56,7 +56,7 @@ function updateStats(){
  const rate=stats.attempts?Math.round(100*stats.made/stats.attempts):0;
  $('accuracy').innerHTML=rate+'<span>%</span>';
  for(const key of ['made','attempts','streak','best'])$(key).textContent=stats[key];
- $('stat-caption').textContent=stats.streak?'Sonraki basket +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)+' seri bonusu.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
+ $('stat-caption').textContent=stats.streak?'Sonraki basket +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)+' seri bonusu, üçlükte +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)*window.PotaRewards.THREE_STREAK_STEP+'.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
  $('sound-button').setAttribute('aria-pressed',String(stats.sound));
  $('sound-button').innerHTML='<svg><use href="#i-'+(stats.sound?'sound':'muted')+'"/></svg><span>Ses '+(stats.sound?'açık':'kapalı')+'</span>';
  $('performance-preference').value=stats.performancePreference;
