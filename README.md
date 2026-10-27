@@ -1,6 +1,6 @@
-# POTA — Google Play projesi 2.0.3
+# POTA — Google Play projesi 2.0.4
 
-Güncel Android Studio/Gradle kaynak projesi: **POTA 2.0.3**, `versionCode 17`, paket `com.pota.court`. Android 6.0+ (`minSdk 23`), `compileSdk/targetSdk 36`. Ana dağıtım `offlineRelease` ve reklamsızdır.
+Güncel Android Studio/Gradle kaynak projesi: **POTA 2.0.4**, `versionCode 18`, paket `com.pota.court`. Android 6.0+ (`minSdk 23`), `compileSdk/targetSdk 36`. Ana dağıtım `offlineRelease` ve reklamsızdır.
 
 ## Android Studio ile açma
 
@@ -29,14 +29,14 @@ Linux'ta araçları sabit SHA-256 ile indiren `android/tools/fetch.sh` isteğe b
 
 - `src/`, `vendor/`, `pack.py`: güncel oyun kaynağı, gömülü sesler ve lisans/provenans dosyaları.
 - `android/`: Gradle wrapper JAR dahil Android Studio projesi; ana/offline/gelecek monetized kaynak setleri.
-- `qa/`: seçili fizik, ses, performans, ödül ve davranış denetimi testleri.
-- `play-release/`: güncel yayın notları ve mağaza/politika şablonları. Ekran görüntüleri önceki 2.0.0 yakalaması olduğu için güncel arayüzden yeniden alınmalı; özgün hash'ler korunur.
+- `qa/`: ödül, hedef ve fizik birim testleri ile paketlenmiş oyunu Chromium'da süren duman testi. Çalıştırma: `node --test qa/*.test.js` (`browser.test.js` için önce `python3 pack.py`; Playwright gerekir).
+- `play-release/`: güncel yayın notları ve mağaza/politika şablonları. Ekran görüntüleri 2.0.4 arayüzünden yeniden alındı; çekim ayrıntıları `play-release/screenshots/manifest.json` içinde.
 - `SOURCE-MANIFEST.json`: oyun ve Android derleme kaynaklarının çalışma alanıyla birebir SHA-256 eşleşmesi; belge paketlemeleri hariç.
 
 Açık sertifika **android/signing/upload-certificate.pem** içindedir. SHA-256:
 
 `63bb7a92b5f55cd58f93d54bc3008a14a8f1adc92a2011bab97df1bd5f014a81`
 
-Özel anahtar, özel parola dosyaları, `local.properties`, derleme önbellekleri, indirilen SDK/JDK/Gradle araçları pakete alınmadı. İmzalı APK/AAB ve yayın materyalleri ayrı **POTA-Google-Play-Yayin-Dosyalari-2.0.3.zip** arşivindedir. Google Play'e APK yerine AAB yükle. App Signing/PEPK aktarım kararları için `play-release/signing-and-backup-tr.md` dosyasını oku. Geliştirici kimliği, destek e-postası, herkese açık gizlilik URL'si ve Console beyanları henüz yayıncı tarafından tamamlanmalıdır.
+Özel anahtar, özel parola dosyaları, `local.properties`, derleme önbellekleri, indirilen SDK/JDK/Gradle araçları pakete alınmadı. 2.0.4 için imzalı APK/AAB bu depoda yoktur; özel imza anahtarıyla yerelde derlenmelidir. Google Play'e APK yerine AAB yükle. App Signing/PEPK aktarım kararları için `play-release/signing-and-backup-tr.md` dosyasını oku. Geliştirici kimliği, destek e-postası, herkese açık gizlilik URL'si ve Console beyanları henüz yayıncı tarafından tamamlanmalıdır.
 
-Bu teslim makro denetimi güncellenen 2.0.3 kaynağının paketlenmesidir. Makro denetimi istemci tarafında davranış ölçer; cihazda kurulu uygulamaları taramaz. Kullanıcının özel videosu ve inceleme görüntüleri genel paketlere alınmadı. Fiziksel telefon, Google Play iç test ve gerçek reklam yayını bu ortamda denenmedi.
+2.0.4: gezinme modunda panya arkasına geçiş engellendi, sahanın öbür yarısındaki pota kullanılabilir oldu, seri bonusu +10 ile sınırlandı ve tek seferlik ödüllü hedefler eklendi (`play-release/SURUM-2.0.4.md`). Makro denetimi istemci tarafında davranış ölçer; cihazda kurulu uygulamaları taramaz. Kullanıcının özel videosu ve inceleme görüntüleri genel paketlere alınmadı. Fiziksel telefon, Google Play iç test ve gerçek reklam yayını bu ortamda denenmedi.

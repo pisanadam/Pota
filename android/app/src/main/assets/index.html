@@ -599,6 +599,28 @@
 .developer-setting{margin:14px 0 22px;padding-top:12px;border-top:1px solid #ffffff0c}.developer-setting>button{font-size:9px;color:#8d9d84}.developer-setting>button[aria-pressed="true"]{color:#edbb89}#developer-panel{padding:12px;border:1px solid #ffffff13;border-radius:7px;margin-top:8px}#developer-panel>p{font-size:9px;line-height:1.7;color:#94a58c;margin:0}#developer-panel .graphics-setting{margin-top:12px;padding-top:12px}#developer-status{margin-top:12px!important;font-family:ui-monospace,monospace;overflow-wrap:anywhere}.reward-ad-button{position:absolute;z-index:3;top:calc(max(27px,env(safe-area-inset-top)) + 53px);left:max(32px,env(safe-area-inset-left));padding:7px 9px;border:1px solid #edc18440;border-radius:7px;background:#182b23e6;text-align:left;color:#f1d3a5}.reward-ad-button>span{display:block;font-size:10px;font-weight:600}.reward-ad-button>small{display:block;font-size:8px;color:#b3bba5;margin-top:3px}.reward-ad-button:disabled{opacity:.6}.boost-badge{position:absolute;z-index:2;right:max(28px,env(safe-area-inset-right));top:calc(max(22px,env(safe-area-inset-top)) + 45px);min-width:40px;text-align:center;pointer-events:none}.boost-badge strong{display:block;font-size:15px;color:#ffcf88;text-shadow:0 1px 8px #15251d}.boost-badge span{font:9px ui-monospace,monospace;color:#eee7d9}.reward-ad-status{position:absolute;z-index:4;top:calc(max(27px,env(safe-area-inset-top)) + 109px);left:max(22px,env(safe-area-inset-left));right:70px;width:max-content;max-width:calc(100% - 92px);padding:8px 10px;font-size:10px;line-height:1.5;border-radius:6px;background:#192e25ed;color:#e8e3d4;pointer-events:none;margin:0}#webgl-error .primary-button{width:auto;margin-top:15px}@media(max-width:600px){.reward-ad-button{top:calc(max(23px,env(safe-area-inset-top)) + 51px);left:max(22px,env(safe-area-inset-left))}.boost-badge{right:max(17px,env(safe-area-inset-right));top:calc(max(17px,env(safe-area-inset-top)) + 44px)}}
 .settings-row{flex-wrap:wrap;row-gap:10px}
 .current-points{position:absolute;z-index:3;top:max(22px,env(safe-area-inset-top));right:calc(max(28px,env(safe-area-inset-right)) + 50px);height:40px;max-width:calc(100% - 190px);display:flex;align-items:center;gap:5px;padding:0 10px;border:1px solid #ffffff18;border-radius:20px;background:#1b3027b8;color:#f8e0b2;pointer-events:none;font-variant-numeric:tabular-nums}.current-points strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:600}.current-points>span{font-size:9px;color:#d2d4bd}@media(max-width:600px){.current-points{top:max(17px,env(safe-area-inset-top));right:calc(max(17px,env(safe-area-inset-right)) + 48px);height:38px;max-width:calc(100% - 174px);padding:0 8px}}@media(max-width:360px){.current-points>span{display:none}.current-points strong{font-size:11px}}
+.goals{margin-top:15px;border:1px solid #ffffff0d;border-radius:8px;background:#ffffff03}
+.goals>summary{display:flex;justify-content:space-between;align-items:center;padding:12px 15px;font-size:11px;color:#d7d9c9;cursor:pointer;list-style:none}
+.goals>summary::-webkit-details-marker{display:none}
+.goals>summary::after{content:"";width:6px;height:6px;margin-left:10px;border-right:1.4px solid #a7b6a0;border-bottom:1.4px solid #a7b6a0;transform:rotate(45deg);transition:transform .2s}
+.goals[open]>summary::after{transform:rotate(-135deg)}
+.goals>summary>span:first-child{flex:1}
+.goals-count{font-size:10px;color:#e9ad71;font-variant-numeric:tabular-nums}
+.goals-list{list-style:none;margin:0;padding:0 15px;max-height:260px;overflow-y:auto;scrollbar-width:thin}
+.goal-item{display:grid;grid-template-columns:1fr auto;gap:3px 10px;padding:10px 0;border-top:1px solid #ffffff09}
+.goal-item strong{font-size:11px;font-weight:550;color:#e6e6da}
+.goal-item p{grid-column:1;margin:0;font-size:9px;line-height:1.5;color:#8fa287}
+.goal-reward{grid-row:1;grid-column:2;font-size:10px;color:#e6b880;font-variant-numeric:tabular-nums;text-align:right}
+.goal-progress{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:8px;color:#94a68b;font-variant-numeric:tabular-nums}
+.goal-progress>i{flex:1;height:3px;border-radius:2px;background:#ffffff10;overflow:hidden}
+.goal-progress>i>b{display:block;height:100%;background:#d98650}
+.goal-item.is-done strong{color:#c4d3b8}
+.goal-item.is-done .goal-reward{color:#a8b99d}
+.goal-item.is-done .goal-progress>i>b{background:#8fb07d}
+.goals-note{margin:0;padding:10px 15px 12px;font-size:8px;line-height:1.6;color:#7f9277;border-top:1px solid #ffffff09}
+.goal-toast{position:absolute;z-index:4;bottom:calc(env(safe-area-inset-bottom) + 31%);left:50%;transform:translateX(-50%);width:min(320px,calc(100% - 36px));padding:12px 15px;border:1px solid #8fb07d66;border-radius:9px;background:#29372ff2;color:#e8efdc;box-shadow:0 5px 25px #0003;pointer-events:none;text-align:center}
+.goal-toast strong{display:block;font-size:12px;line-height:1.4;font-weight:600;color:#c6e0a8}
+.goal-toast p{margin:4px 0 0;font-size:11px;line-height:1.5}
 
 </style>
 </head><body>
@@ -625,6 +647,7 @@
 <div id="intro" class="intro"><svg><use href="#i-arrow"/></svg><p>Topu yukarı sürükle ve bırak.</p><span>Düz kaydır: şut. Kavisli kaydır: falso.</span></div>
 <div id="gesture-cue" class="gesture-cue" aria-hidden="true"><span></span><span></span><span></span></div>
 <div id="score-popup" class="score-popup" aria-hidden="true" hidden></div>
+<div id="goal-toast" class="goal-toast" role="status" aria-live="polite" hidden><strong id="goal-toast-title"></strong><p id="goal-toast-message"></p></div>
 <div id="fairplay-notice" class="fairplay-notice" role="status" aria-live="polite" hidden><strong id="fairplay-title"></strong><p id="fairplay-message"></p></div>
 <div id="announce" class="visually-hidden" role="status" aria-live="polite"></div>
 </main>
@@ -636,7 +659,8 @@
 <p id="stat-caption" class="stat-caption">İlk şutunla başla.</p>
 <div class="points-summary" aria-label="Puanların"><div><strong id="wallet-balance">0</strong><span>Harcanabilir puan</span></div><div><strong id="total-points">0</strong><span>Toplam kazanılan</span></div></div>
 <button id="open-shop" class="shop-menu-button"><span><svg><use href="#i-ball"/></svg>Puan pazarı</span><span aria-hidden="true">↗</span></button>
-<div class="how-to"><p class="eyebrow">SADECE SÜRÜKLE VE BIRAK.</p><p>Yukarı çekme mesafesi atış gücünü belirler. Sağa veya sola çekerek yön ver. Parmağınla kavis çizerek falso ekle; panyayı hedefleyerek sektir. Saydam ok ve izler, topun uçuşunu ve sekmesini gösterir. Her atıştan sonra top otomatik olarak eline döner. Gezinme modunda sahayı sürükleyerek dolaş; şut moduna dönünce bulunduğun yerden atış yap.</p><p class="tip">Orta uzunlukta, düz bir hareketle başla. Top kısa düşerse biraz daha uzun sürükle.</p><p class="points-tip">İkilik basket 2, üçlük basket 3 puan. Art arda basketlerde seri bonusu büyür: ikinci basket +1, üçüncü +2, dördüncü +3… Kaçırınca bonus sıfırlanır. Puanlarınla top, iz, file veya zincir, çember, panya ve ortam al.</p></div>
+<details id="goals" class="goals"><summary><span>Hedefler</span><span id="goals-count" class="goals-count">0/0</span></summary><ol id="goals-list" class="goals-list"></ol><p class="goals-note">Her hedef bir kez ödül verir. Ödüller harcanabilir puanına eklenir.</p></details>
+<div class="how-to"><p class="eyebrow">SADECE SÜRÜKLE VE BIRAK.</p><p>Yukarı çekme mesafesi atış gücünü belirler. Sağa veya sola çekerek yön ver. Parmağınla kavis çizerek falso ekle; panyayı hedefleyerek sektir. Saydam ok ve izler, topun uçuşunu ve sekmesini gösterir. Her atıştan sonra top otomatik olarak eline döner. Gezinme modunda sahayı sürükleyerek dolaş; şut moduna dönünce bulunduğun yerden, o yarı sahadaki potaya atış yap.</p><p class="tip">Orta uzunlukta, düz bir hareketle başla. Top kısa düşerse biraz daha uzun sürükle.</p><p class="points-tip">İkilik basket 2, üçlük basket 3 puan. Art arda basketlerde seri bonusu büyür: ikinci basket +1, üçüncü +2, dördüncü +3… en fazla +10. Kaçırınca bonus sıfırlanır. Hedefleri tamamlayarak ek puan kazanırsın. Puanlarınla top, iz, file veya zincir, çember, panya ve ortam al.</p></div>
 <div class="graphics-setting"><label for="performance-preference">Oyun tercihi</label><select id="performance-preference" aria-describedby="performance-description"><option value="smooth">Akıcılık</option><option value="balanced">Dengeli</option><option value="graphics">Grafik</option></select><p id="performance-description">Akıcılık ekranına göre 60/120 FPS, Dengeli destekleyen ekranlarda 90 FPS hedefler. Grafik, daha yüksek çözünürlük ve ayrıntı ile 60 FPS hedefler. Cihazın gücüne göre görüntü otomatik ayarlanır.</p></div>
 <div class="fps-setting"><button id="fps-button" class="setting-button fps-mode-button" aria-pressed="false"><span>FPS göstergesi kapalı</span><i class="setting-switch" aria-hidden="true"></i></button></div>
 <div class="settings-row"><button id="sound-button" class="setting-button" aria-pressed="true"><svg><use href="#i-sound"/></svg><span>Ses açık</span></button><button id="privacy-button" class="setting-button" hidden>Reklam gizliliği</button><button id="privacy-policy-button" class="setting-button" hidden>Gizlilik politikası</button></div>
@@ -647,7 +671,7 @@
 </dialog>
 <dialog id="shop-dialog" class="shop-dialog" aria-labelledby="shop-title">
 <header class="dialog-header"><div><p class="eyebrow">HER BASKET BİR ADIM.</p><h1 id="shop-title">Puan pazarı</h1></div><button id="close-shop" class="close-button" aria-label="Puan pazarını kapat"><svg><use href="#i-close"/></svg></button></header>
-<div class="shop-wallet"><div><span>Harcanabilir puan</span><strong id="shop-balance">0</strong></div><p>İkilik <b>+2</b> · Üçlük <b>+3</b><br>Seri bonusu <b>+1, +2, +3…</b></p></div>
+<div class="shop-wallet"><div><span>Harcanabilir puan</span><strong id="shop-balance">0</strong></div><p>İkilik <b>+2</b> · Üçlük <b>+3</b><br>Seri bonusu <b>+1, +2 … +10</b></p></div>
 <p class="shop-intro">Sahada kazan, kendi tarzınla oyna.</p>
 <div class="shop-tabs" role="tablist" aria-label="Kozmetik kategorisi">
 <button id="shop-tab-balls" role="tab" aria-selected="true" aria-controls="shop-items" tabindex="0" data-shop-tab="ball">Toplar <span class="shop-tab-count"></span></button>
@@ -5942,17 +5966,76 @@ window.createCourtAudio = function createCourtAudio() {
 /* POTA: deterministic basket and streak rewards, shared by the game and QA. */
 (function(global){
  'use strict';
+ // A capped streak bonus keeps long streaks rewarding without letting one
+ // session outpace every cosmetic price: +1, +2 … +10 per basket at most.
+ const MAX_STREAK_BONUS=10;
  function calculate(state,basePoints,made,multiplier=1){
   const previous=Number.isSafeInteger(state.streak)&&state.streak>0?state.streak:0;
   const best=Number.isSafeInteger(state.best)&&state.best>0?state.best:0;
   const streak=made?Math.min(Number.MAX_SAFE_INTEGER-3,previous+1):0;
   const base=basePoints===3?3:2;
-  const bonus=made?Math.max(0,streak-1):0;
+  const bonus=made?Math.min(MAX_STREAK_BONUS,Math.max(0,streak-1)):0;
   multiplier=multiplier===2||multiplier===3?multiplier:1;
   const unmultipliedPoints=made?base+bonus:0;
   return{streak,best:Math.max(best,streak),basePoints:made?base:0,bonus,multiplier,unmultipliedPoints,points:Math.min(Number.MAX_SAFE_INTEGER,unmultipliedPoints*multiplier)};
  }
- global.PotaRewards=Object.freeze({calculate});
+ global.PotaRewards=Object.freeze({calculate,MAX_STREAK_BONUS});
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* POTA: one-time goals with fixed point rewards. Pure logic, shared by the game and QA.
+ * Only baskets that earned points advance a goal; blocked automatic repeats do not.
+ */
+(function(global){
+ 'use strict';
+ const METRICS=Object.freeze(['baskets','threes','swishes','banks','farHoop','bestStreak']);
+ const catalog=Object.freeze([
+  {id:'first-basket',metric:'baskets',target:1,reward:10,name:'İlk basket',description:'Herhangi bir basket at.'},
+  {id:'baskets-25',metric:'baskets',target:25,reward:30,name:'Isınma turu',description:'Toplam 25 basket at.'},
+  {id:'baskets-100',metric:'baskets',target:100,reward:120,name:'Antrenman müdavimi',description:'Toplam 100 basket at.'},
+  {id:'baskets-500',metric:'baskets',target:500,reward:600,name:'Salonun yıldızı',description:'Toplam 500 basket at.'},
+  {id:'baskets-2000',metric:'baskets',target:2000,reward:2500,name:'Pota ustası',description:'Toplam 2.000 basket at.'},
+  {id:'streak-3',metric:'bestStreak',target:3,reward:15,name:'Ritim',description:'Art arda 3 basket at.'},
+  {id:'streak-5',metric:'bestStreak',target:5,reward:40,name:'Seri başladı',description:'Art arda 5 basket at.'},
+  {id:'streak-10',metric:'bestStreak',target:10,reward:150,name:'Eli sıcak',description:'Art arda 10 basket at.'},
+  {id:'streak-20',metric:'bestStreak',target:20,reward:500,name:'Durdurulamaz',description:'Art arda 20 basket at.'},
+  {id:'three-1',metric:'threes',target:1,reward:20,name:'Üç sayı çizgisi',description:'Üçlük çizgisinin dışından basket at.'},
+  {id:'threes-50',metric:'threes',target:50,reward:300,name:'Uzak mesafe',description:'Toplam 50 üçlük at.'},
+  {id:'swish-1',metric:'swishes',target:1,reward:20,name:'Tertemiz',description:'Çembere ve panyaya değmeden basket at.'},
+  {id:'swishes-25',metric:'swishes',target:25,reward:250,name:'Sadece file',description:'25 tertemiz basket at.'},
+  {id:'bank-1',metric:'banks',target:1,reward:20,name:'Panyadan',description:'Panyaya sektirerek basket at.'},
+  {id:'banks-25',metric:'banks',target:25,reward:250,name:'Açı ustası',description:'Panyadan 25 basket at.'},
+  {id:'far-hoop',metric:'farHoop',target:1,reward:30,name:'Karşı pota',description:'Sahanın öbür yarısına yürü, şut moduna dön ve oradaki potaya basket at.'}
+ ].map(Object.freeze));
+ const byId=new Map(catalog.map(goal=>[goal.id,goal]));
+ const count=value=>Number.isSafeInteger(value)&&value>0?value:0;
+ function normalize(saved){
+  const source=saved&&typeof saved==='object'?saved:{};
+  const progress={},input=source.progress&&typeof source.progress==='object'?source.progress:{};
+  for(const metric of METRICS)progress[metric]=count(input[metric]);
+  const completed=Array.isArray(source.completed)?[...new Set(source.completed.filter(id=>byId.has(id)))]:[];
+  return{completed,progress};
+ }
+ // shot: {made, pointsBlocked, value, streak, swish, bank, hoop}
+ function record(saved,shot){
+  const state=normalize(saved),newlyCompleted=[];
+  if(!shot||shot.made!==true||shot.pointsBlocked===true)return{state,newlyCompleted,reward:0};
+  const p=state.progress,add=(metric,amount)=>{p[metric]=Math.min(Number.MAX_SAFE_INTEGER,p[metric]+amount);};
+  add('baskets',1);
+  if(shot.value===3)add('threes',1);
+  if(shot.swish===true)add('swishes',1);
+  if(shot.bank===true)add('banks',1);
+  if(shot.hoop===1)add('farHoop',1);
+  p.bestStreak=Math.max(p.bestStreak,count(shot.streak));
+  let reward=0;
+  for(const goal of catalog)if(!state.completed.includes(goal.id)&&p[goal.metric]>=goal.target){state.completed.push(goal.id);newlyCompleted.push(goal);reward+=goal.reward;}
+  return{state,newlyCompleted,reward};
+ }
+ function summary(saved){
+  const state=normalize(saved);
+  return catalog.map(goal=>({...goal,done:state.completed.includes(goal.id),current:Math.min(goal.target,state.progress[goal.metric])}));
+ }
+ global.PotaGoals=Object.freeze({catalog,metrics:METRICS,normalize,record,summary});
 })(typeof window!=='undefined'?window:globalThis);
 
 </script><script>
@@ -6279,7 +6362,7 @@ function uiOpen(){return dialog.open||Boolean(shopDialog&&shopDialog.open);}
 const STORAGE_KEY = 'pota.fixed-shots.v1';
 const BALL_SKINS=window.PotaShopCatalog.filter(item=>item.type==='ball').map(item=>item.id),PARTICLE_STYLES=window.PotaShopCatalog.filter(item=>item.type==='particle').map(item=>item.id);
 const COURT_FIELDS={net:{owned:'ownedNets',equipped:'equippedNet',base:'nylon',setter:'setNetStyle'},rim:{owned:'ownedRims',equipped:'equippedRim',base:'standard',setter:'setRimStyle'},backboard:{owned:'ownedBackboards',equipped:'equippedBackboard',base:'glass',setter:'setBackboardStyle'},environment:{owned:'ownedEnvironments',equipped:'equippedEnvironment',base:'gym',setter:'setEnvironmentStyle'}};
-const defaults = () => ({attempts:0,made:0,streak:0,best:0,sound:true,showFPS:false,performancePreference:'smooth',developerMode:false,graphicsQuality:'auto',resolutionQuality:'auto',history:[],balance:0,totalPoints:0,ownedBalls:['classic'],ownedParticles:['none'],equippedBall:'classic',equippedParticle:'none',ownedNets:['nylon'],equippedNet:'nylon',ownedRims:['standard'],equippedRim:'standard',ownedBackboards:['glass'],equippedBackboard:'glass',ownedEnvironments:['gym'],equippedEnvironment:'gym'});
+const defaults = () => ({attempts:0,made:0,streak:0,best:0,sound:true,showFPS:false,performancePreference:'smooth',developerMode:false,graphicsQuality:'auto',resolutionQuality:'auto',history:[],balance:0,totalPoints:0,ownedBalls:['classic'],ownedParticles:['none'],equippedBall:'classic',equippedParticle:'none',ownedNets:['nylon'],equippedNet:'nylon',ownedRims:['standard'],equippedRim:'standard',ownedBackboards:['glass'],equippedBackboard:'glass',ownedEnvironments:['gym'],equippedEnvironment:'gym',goals:window.PotaGoals.normalize(null)});
 let stats = defaults();
 try {
  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -6305,6 +6388,9 @@ try {
    if(Array.isArray(saved[field.owned]))stats[field.owned]=[...new Set([field.base,...saved[field.owned].filter(id=>allowed.includes(id))])];
    if(stats[field.owned].includes(saved[field.equipped]))stats[field.equipped]=saved[field.equipped];
   }
+  stats.goals=window.PotaGoals.normalize(saved.goals);
+  // Saves from before goals existed: credit earlier baskets and streaks once.
+  if(!saved.goals){stats.goals.progress.baskets=stats.made;stats.goals.progress.bestStreak=stats.best;}
  }
 } catch (_) {}
 function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(stats));}catch(_){}}
@@ -6324,7 +6410,7 @@ function updateStats(){
  const rate=stats.attempts?Math.round(100*stats.made/stats.attempts):0;
  $('accuracy').innerHTML=rate+'<span>%</span>';
  for(const key of ['made','attempts','streak','best'])$(key).textContent=stats[key];
- $('stat-caption').textContent=stats.streak?'Sonraki basket +'+stats.streak+' seri bonusu.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
+ $('stat-caption').textContent=stats.streak?'Sonraki basket +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)+' seri bonusu.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
  $('sound-button').setAttribute('aria-pressed',String(stats.sound));
  $('sound-button').innerHTML='<svg><use href="#i-'+(stats.sound?'sound':'muted')+'"/></svg><span>Ses '+(stats.sound?'açık':'kapalı')+'</span>';
  $('performance-preference').value=stats.performancePreference;
@@ -6340,6 +6426,22 @@ function updateStats(){
  $('current-points-value').textContent=(stats.balance>=100000?compactPointsNumber:pointsNumber).format(stats.balance);
  $('current-points').title=pointsNumber.format(stats.balance)+' harcanabilir puan';
  if($('total-points'))$('total-points').textContent=stats.totalPoints;
+ renderGoals();
+}
+function renderGoals(){
+ const list=$('goals-list');if(!list)return;
+ const goals=window.PotaGoals.summary(stats.goals);
+ $('goals-count').textContent=goals.filter(goal=>goal.done).length+'/'+goals.length;
+ list.replaceChildren(...goals.map(goal=>{
+  const item=document.createElement('li');item.className='goal-item'+(goal.done?' is-done':'');
+  const title=document.createElement('strong');title.textContent=goal.name;
+  const reward=document.createElement('span');reward.className='goal-reward';reward.textContent=goal.done?'Tamamlandı':'+'+pointsNumber.format(goal.reward);
+  const text=document.createElement('p');text.textContent=goal.description;
+  const progress=document.createElement('span');progress.className='goal-progress';
+  const bar=document.createElement('i'),fill=document.createElement('b');fill.style.width=(100*goal.current/goal.target)+'%';bar.appendChild(fill);
+  progress.append(bar,pointsNumber.format(goal.current)+' / '+pointsNumber.format(goal.target));
+  item.append(title,reward,text,progress);return item;
+ }));
 }
 updateStats();
 let nativeInfo={};
@@ -6367,6 +6469,11 @@ world.setBallSkin(stats.equippedBall);world.setParticleStyle(stats.equippedParti
 for(const field of Object.values(COURT_FIELDS))world[field.setter](stats[field.equipped]);
 const cameraPosition=new T.Vector3(0,1.7,-7.35);
 const lookTarget=new T.Vector3(0,2.72,-12.35);
+// The player faces the hoop on their half of the court. Walking stops in
+// front of each backboard: no shooting from behind the glass.
+let activeHoop=0;
+const COURT_LIMIT_Z=Math.abs(P.hoops[0].z)-.1;
+function faceHoop(index){activeHoop=index;const hoop=P.hoops[index];lookTarget.set(hoop.x,2.72,hoop.z);}
 world.camera.position.copy(cameraPosition);world.camera.lookAt(lookTarget);
 const forward=new T.Vector3();world.camera.getWorldDirection(forward);
 const right=new T.Vector3().crossVectors(forward,new T.Vector3(0,1,0)).normalize();
@@ -6389,10 +6496,13 @@ function alignView(){
 function movePlayer(side,advance){
  const horizontalLength=Math.hypot(forward.x,forward.z)||1;
  cameraPosition.x=Math.max(-7.2,Math.min(7.2,cameraPosition.x+right.x*side+forward.x/horizontalLength*advance));
- cameraPosition.z=Math.max(-13.55,Math.min(13.55,cameraPosition.z+right.z*side+forward.z/horizontalLength*advance));
+ cameraPosition.z=Math.max(-COURT_LIMIT_Z,Math.min(COURT_LIMIT_Z,cameraPosition.z+right.z*side+forward.z/horizontalLength*advance));
  for(const hoop of P.hoops){const dx=cameraPosition.x-hoop.x,dz=cameraPosition.z-hoop.z,distance=Math.hypot(dx,dz);if(distance<1.05){cameraPosition.x=hoop.x+(distance?dx/distance:0)*1.05;cameraPosition.z=hoop.z+(distance?dz/distance:1)*1.05;}}
  alignView();
 }
+// Turn when shooting resumes: flipping during a walk would reverse its
+// controls and bounce a player who keeps walking back across half court.
+function updateFacing(){const next=cameraPosition.z>0?1:0;if(next!==activeHoop){faceHoop(next);alignView();}}
 alignView();
 let state='ready',drag=null,flight=null,returnTime=0,releaseTime=0,afterResult=0,netPulse=0,recorded=false,firstShot=false;
 let lastTime=0,worldTime=0,physicsRemainder=0,shotSerial=0;
@@ -6451,7 +6561,7 @@ function getHold(time){ // A ball held naturally below the line of sight.
  return hold;
 }
 function hideIntro(){if(!firstShot){firstShot=true;$('intro').classList.add('fade');$('gesture-cue').classList.remove('show');}}
-function shotPointValue(){const hoop=P.hoops[0],dx=cameraPosition.x-hoop.x,dz=(cameraPosition.z-hoop.z)*hoop.front;return (dz<1.415?Math.abs(dx)>6.625:Math.hypot(dx,dz)>6.775)?3:2;}
+function shotPointValue(){const hoop=P.hoops[activeHoop],dx=cameraPosition.x-hoop.x,dz=(cameraPosition.z-hoop.z)*hoop.front;return (dz<1.415?Math.abs(dx)>6.625:Math.hypot(dx,dz)>6.775)?3:2;}
 let scorePopupTimer;
 function showScore(points,bonus=0,blocked=false,multiplier=1){
  const popup=$('score-popup');clearTimeout(scorePopupTimer);popup.textContent=blocked?'Basket':'+'+points;popup.hidden=false;
@@ -6459,22 +6569,31 @@ function showScore(points,bonus=0,blocked=false,multiplier=1){
  popup.classList.remove('show');void popup.offsetWidth;popup.classList.add('show');
  scorePopupTimer=setTimeout(()=>{popup.hidden=true;popup.classList.remove('show');},1800);
 }
+let goalToastTimer;
+function showGoals(goals,reward){
+ const toast=$('goal-toast');clearTimeout(goalToastTimer);
+ $('goal-toast-title').textContent=goals.length===1?'Hedef tamamlandı: '+goals[0].name:goals.length+' hedef tamamlandı';
+ $('goal-toast-message').textContent='+'+pointsNumber.format(reward)+' puan ödül';
+ toast.hidden=false;goalToastTimer=setTimeout(()=>{toast.hidden=true;},4500);
+}
 function finishRecord(made){if(recorded)return;recorded=true;const pointsBlocked=flight.fairplay.allowPoints===false,reward=window.PotaRewards.calculate(stats,flight.shotPoints,made&&!pointsBlocked,flight.pointMultiplier);stats.attempts++;stats.streak=reward.streak;stats.best=reward.best;if(made){stats.made++;stats.balance=Math.min(Number.MAX_SAFE_INTEGER,stats.balance+reward.points);stats.totalPoints=Math.min(Number.MAX_SAFE_INTEGER,stats.totalPoints+reward.points);netPulse++;showScore(flight.shotPoints*reward.multiplier,reward.bonus*reward.multiplier,pointsBlocked,reward.multiplier);if(navigator.vibrate)navigator.vibrate(20);}
- stats.history.push({made,speed:flight.shotSpeed,angle:flight.shotAngle,value:flight.shotPoints,bonus:reward.bonus,multiplier:reward.multiplier,points:reward.points,pointsBlocked,time:Date.now()});stats.history=stats.history.slice(-100);persist();updateStats();$('announce').textContent=made?pointsBlocked?'Basket. Otomatik atış tekrarından puan verilmedi. Top eline geri geliyor.':'Basket. '+reward.points+' puan kazandın. Top eline geri geliyor.':'Şut kaçtı. Seri sıfırlandı. Top eline geri geliyor.';
+ const goalResult=window.PotaGoals.record(stats.goals,{made,pointsBlocked,value:flight.shotPoints,streak:reward.streak,swish:flight.rimContacts+flight.boardContacts+flight.frameContacts===0,bank:flight.boardContacts>0,hoop:flight.scoredHoop});stats.goals=goalResult.state;
+ if(goalResult.reward){stats.balance=Math.min(Number.MAX_SAFE_INTEGER,stats.balance+goalResult.reward);stats.totalPoints=Math.min(Number.MAX_SAFE_INTEGER,stats.totalPoints+goalResult.reward);showGoals(goalResult.newlyCompleted,goalResult.reward);}
+ stats.history.push({made,speed:flight.shotSpeed,angle:flight.shotAngle,value:flight.shotPoints,hoop:activeHoop,bonus:reward.bonus,multiplier:reward.multiplier,points:reward.points,pointsBlocked,time:Date.now()});stats.history=stats.history.slice(-100);persist();updateStats();$('announce').textContent=(goalResult.reward?'Hedef tamamlandı, '+goalResult.reward+' puan ödül. ':'')+(made?pointsBlocked?'Basket. Otomatik atış tekrarından puan verilmedi. Top eline geri geliyor.':'Basket. '+reward.points+' puan kazandın. Top eline geri geliyor.':'Şut kaçtı. Seri sıfırlandı. Top eline geri geliyor.');
 }
 function shotOptions(d){
  const reference=Math.max(130,Math.min(220,height*.25));
  const ratio=Math.min(2.3,Math.max(0,d.dy/reference));
- const distance=Math.hypot(release.x-P.hoops[0].x,release.z-P.hoops[0].z);
+ const distance=Math.hypot(release.x-P.hoops[activeHoop].x,release.z-P.hoops[activeHoop].z);
  const minimumAngle=Math.min(83,89-9*distance);
  let angle=Math.min(83,Math.max(50+Math.min(12,ratio*4),minimumAngle));
  // A distant shot needs a flatter arc inside an actual gym ceiling.
  while(angle>35){
-  const estimatedSpeed=P.idealSpeed(release,0,angle),vertical=estimatedSpeed*Math.sin(angle*Math.PI/180),dragRate=P.AIR_DRAG;
+  const estimatedSpeed=P.idealSpeed(release,activeHoop,angle),vertical=estimatedSpeed*Math.sin(angle*Math.PI/180),dragRate=P.AIR_DRAG;
   const apex=release.y+vertical/dragRate-P.G/(dragRate*dragRate)*Math.log1p(dragRate*vertical/P.G);
   if(apex<P.roomBounds.ceiling-P.BALL_RADIUS-.18)break;angle-=1;
  }
- const ideal=P.idealSpeed(release,0,angle);
+ const ideal=P.idealSpeed(release,activeHoop,angle);
  // A gentle response near a medium swipe gives the finger finer power control.
  // The simulated flight and contacts still determine every result.
  const difference=ratio-1;
@@ -6490,7 +6609,7 @@ function shotOptions(d){
   curve+=((a.x+b.x)*.5-d.dx*(a.y+b.y)*.5/d.dy)*dy;
  }
  const sideSpin=Math.max(-36,Math.min(36,-curve/Math.max(22,d.dy)/reference*95));
- return {position:release,targetHoop:0,speed,angleDeg:angle,azimuthOffset:direction,sideSpin};
+ return {position:release,targetHoop:activeHoop,speed,angleDeg:angle,azimuthOffset:direction,sideSpin};
 }
 let aimPreview=null,previewKey='';
 function hideAimArrow(){aimPreview=null;previewKey='';world.setAimArrow([],false);world.setTrajectory([],false);}
@@ -6549,7 +6668,7 @@ let keyChargeStart=0;
 canvas.addEventListener('keydown',event=>{if(mode==='walk'&&!uiOpen()&&['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();walkKeys.add(event.code);return;}if(mode==='shoot'&&event.code==='Space'&&!event.repeat&&state==='ready'&&!uiOpen()){event.preventDefault();ensureAudio();keyChargeStart=performance.now();drag={id:'key',dx:0,dy:0,startedAt:inputTime(event),trusted:event.isTrusted===true,fairplaySamples:[{x:0,y:0,t:0}]};state='aim';hideIntro();}if(event.code==='ArrowLeft'&&drag&&drag.id==='key'){event.preventDefault();drag.dx-=5;}if(event.code==='ArrowRight'&&drag&&drag.id==='key'){event.preventDefault();drag.dx+=5;}});
 canvas.addEventListener('keyup',event=>{walkKeys.delete(event.code);if(event.code==='Space'&&drag&&drag.id==='key'){event.preventDefault();drag.endedAt=Math.max(drag.startedAt,inputTime(event));drag.trusted=drag.trusted&&event.isTrusted===true;drag.fairplaySamples.push({x:drag.dx,y:drag.dy,t:drag.endedAt-drag.startedAt});throwBall();}});
 window.addEventListener('blur',()=>{fairplay.interrupt();clearFairplayNotice();walkKeys.clear();roamDrag=null;if(state==='aim'){drag=null;state='ready';hideAimArrow();}});
-function pauseGame(){stopFrames();fairplay.interrupt();clearFairplayNotice();walkKeys.clear();roamDrag=null;physicsRemainder=0;if(state==='aim'){drag=null;state='ready';hideAimArrow();}clearTimeout(scorePopupTimer);$('score-popup').hidden=true;audio.suspend();}
+function pauseGame(){stopFrames();fairplay.interrupt();clearFairplayNotice();walkKeys.clear();roamDrag=null;physicsRemainder=0;if(state==='aim'){drag=null;state='ready';hideAimArrow();}clearTimeout(scorePopupTimer);$('score-popup').hidden=true;clearTimeout(goalToastTimer);$('goal-toast').hidden=true;audio.suspend();}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseGame();else{lastTime=0;scheduleFrame();}});
 window.addEventListener('pota:pause',()=>{appPaused=true;pauseGame();});
 window.addEventListener('pota:resume',()=>{appPaused=false;lastTime=0;scheduleFrame();});
@@ -6608,7 +6727,7 @@ function frame(milliseconds){frameRequest=0;
    ballDisplay.copy(returnStart).lerp(getHold(worldTime),easing);ballDisplay.y+=Math.sin(progress*Math.PI)*.42;world.setBall(ballDisplay);
    if(progress===1){state='ready';flight=null;$('menu-button').disabled=false;$('announce').textContent='Yeni şut için hazır.';updateRewardedUI(rewarded.getState());}
   }
-  world.animate(dt,worldTime,{netPulse,targetHoop:-1,ballState:state==='flight'?flight:null});
+  world.animate(dt,worldTime,{netPulse,targetHoop:Math.sign(P.hoops[activeHoop].z),ballState:state==='flight'?flight:null});
   for(const movement of world.getNetAudioState())audio.netMotion(movement);
   world.render();
   if(world.samplePerformanceFrame)world.samplePerformanceFrame({now:milliseconds,frameMs,renderMs:performance.now()-frameStart,visible:true});
@@ -6621,7 +6740,7 @@ function frame(milliseconds){frameRequest=0;
 world.setBall(getHold(0));world.render();$('loading').classList.add('done');setTimeout(()=>$('loading').hidden=true,700);scheduleFrame();
 function closeMenu(){dialog.close();$('reset-confirm').hidden=true;canvas.focus({preventScroll:true});ensureAudio();}
 function setMode(next){
- if(state!=='ready')return;fairplay.interrupt();clearFairplayNotice();mode=next;walkKeys.clear();roamDrag=null;hideAimArrow();world.ball.visible=mode==='shoot';
+ if(state!=='ready')return;fairplay.interrupt();clearFairplayNotice();mode=next;walkKeys.clear();roamDrag=null;if(mode==='shoot')updateFacing();hideAimArrow();world.ball.visible=mode==='shoot';
  $('shoot-mode').setAttribute('aria-pressed',String(mode==='shoot'));$('walk-mode').setAttribute('aria-pressed',String(mode==='walk'));
  canvas.setAttribute('aria-label',mode==='walk'?'Sahada gezinmek için parmağınla sürükle. Klavyede WASD veya yön tuşlarını kullan.':'Şut için yukarı kaydır; kavis çizerek falso ver. Ok ve izler uçuşu gösterir.');
  $('intro').querySelector('p').textContent=mode==='walk'?'Sahayı sürükleyerek dolaş.':'Bu noktadan şut at.';
@@ -6640,7 +6759,7 @@ $('performance-preference').addEventListener('change',()=>{const value=$('perfor
 $('developer-toggle').addEventListener('click',()=>{stats.developerMode=!stats.developerMode;if(!stats.developerMode){stats.graphicsQuality='auto';stats.resolutionQuality='auto';}applyPresentation();persist();updateStats();world.render();});
 for(const[id,key,allowed]of [['graphics-quality','graphicsQuality',['auto','balanced','high','ultra']],['resolution-quality','resolutionQuality',['auto','low','medium','high','max']]])$(id).addEventListener('change',()=>{const value=$(id).value;if(!stats.developerMode||!allowed.includes(value)){updateStats();return;}stats[key]=value;applyPresentation();persist();world.render();});
 $('reset-stats').addEventListener('click',()=>{$('reset-confirm').hidden=false;});$('cancel-reset').addEventListener('click',()=>{$('reset-confirm').hidden=true;});
-$('confirm-reset').addEventListener('click',()=>{fairplay.interrupt();clearFairplayNotice();const retained={sound:stats.sound,showFPS:stats.showFPS,performancePreference:stats.performancePreference,developerMode:stats.developerMode,graphicsQuality:stats.graphicsQuality,resolutionQuality:stats.resolutionQuality,balance:stats.balance,totalPoints:stats.totalPoints,ownedBalls:stats.ownedBalls,ownedParticles:stats.ownedParticles,equippedBall:stats.equippedBall,equippedParticle:stats.equippedParticle};for(const field of Object.values(COURT_FIELDS)){retained[field.owned]=stats[field.owned];retained[field.equipped]=stats[field.equipped];}stats={...defaults(),...retained};persist();updateStats();$('reset-confirm').hidden=true;});
+$('confirm-reset').addEventListener('click',()=>{fairplay.interrupt();clearFairplayNotice();const retained={sound:stats.sound,showFPS:stats.showFPS,performancePreference:stats.performancePreference,developerMode:stats.developerMode,graphicsQuality:stats.graphicsQuality,resolutionQuality:stats.resolutionQuality,balance:stats.balance,totalPoints:stats.totalPoints,ownedBalls:stats.ownedBalls,ownedParticles:stats.ownedParticles,equippedBall:stats.equippedBall,equippedParticle:stats.equippedParticle,goals:stats.goals};for(const field of Object.values(COURT_FIELDS)){retained[field.owned]=stats[field.owned];retained[field.equipped]=stats[field.equipped];}stats={...defaults(),...retained};persist();updateStats();$('reset-confirm').hidden=true;});
 const shop=window.createPotaShop({
  getEconomy:()=>{
   const economy={balance:stats.balance,ownedBalls:[...stats.ownedBalls],ownedParticles:[...stats.ownedParticles],equippedBall:stats.equippedBall,equippedParticle:stats.equippedParticle};
@@ -6666,7 +6785,7 @@ let contextRecoveryTimer=0;
 canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();graphicsLost=true;stopFrames();audio.suspend();$('loading').hidden=false;$('loading').classList.remove('done');$('loading').querySelector('p').textContent='Grafikler yeniden hazırlanıyor…';contextRecoveryTimer=setTimeout(()=>{try{sessionStorage.setItem('pota.compatibility','true');}catch(_){}location.reload();},5000);});
 canvas.addEventListener('webglcontextrestored',()=>{clearTimeout(contextRecoveryTimer);graphicsLost=false;lastTime=0;renderPaceTime=null;$('loading').hidden=true;scheduleFrame();});
 // Read-only diagnostics for reproducible offline verification.
-window.Pota={getState:()=>({state,mode,targetFps,displayRefreshRate,rewarded:rewarded.getState(),position:{x:cameraPosition.x,y:cameraPosition.y,z:cameraPosition.z},release:{...release},shotValue:shotPointValue(),stats:JSON.parse(JSON.stringify(stats)),arrowVisible:world.aimArrow.visible,aim:aimPreview?JSON.parse(JSON.stringify(aimPreview)):null,net:world.getNetDiagnostics(),cosmetics:world.getCosmeticState(),graphics:world.getGraphicsDiagnostics(),weather:world.getWeatherDiagnostics(),audio:audio.diagnostics,fairplay:fairplay.getDiagnostics(),ball:flight?{position:{...flight.position},time:flight.time,scored:flight.scored,guide:flight.drawingGuide?{active:flight.drawingGuide.active,elapsed:flight.drawingGuide.elapsed,duration:flight.drawingGuide.duration,reason:flight.drawingGuide.reason}:null}:null}),getShotReference:()=>Math.max(130,Math.min(220,height*.25))};
+window.Pota={getState:()=>({state,mode,activeHoop,targetFps,displayRefreshRate,rewarded:rewarded.getState(),position:{x:cameraPosition.x,y:cameraPosition.y,z:cameraPosition.z},release:{...release},shotValue:shotPointValue(),stats:JSON.parse(JSON.stringify(stats)),arrowVisible:world.aimArrow.visible,aim:aimPreview?JSON.parse(JSON.stringify(aimPreview)):null,net:world.getNetDiagnostics(),cosmetics:world.getCosmeticState(),graphics:world.getGraphicsDiagnostics(),weather:world.getWeatherDiagnostics(),audio:audio.diagnostics,fairplay:fairplay.getDiagnostics(),ball:flight?{position:{...flight.position},time:flight.time,scored:flight.scored,guide:flight.drawingGuide?{active:flight.drawingGuide.active,elapsed:flight.drawingGuide.elapsed,duration:flight.drawingGuide.duration,reason:flight.drawingGuide.reason}:null}:null}),getShotReference:()=>Math.max(130,Math.min(220,height*.25))};
 })();
 
 </script>

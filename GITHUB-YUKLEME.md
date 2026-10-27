@@ -1,6 +1,6 @@
-# POTA 2.0.3 projesini GitHub'a yükleme
+# POTA 2.0.4 projesini GitHub'a yükleme
 
-Bu klasör, 2.0.3 / versionCode 17 kaynak projesinin GitHub için hazırlanmış kopyasıdır. Oyun kodu değişmedi. `.gitignore`, bu kılavuz ve kullanılan Three.js r160 sürümünün tam MIT lisansı (`vendor/THREE-LICENSE.txt`) eklendi. Lisans kaynağı: https://raw.githubusercontent.com/mrdoob/three.js/r160/LICENSE
+Bu klasör, 2.0.4 / versionCode 18 kaynak projesinin GitHub için hazırlanmış kopyasıdır. `.gitignore`, bu kılavuz ve kullanılan Three.js r160 sürümünün tam MIT lisansı (`vendor/THREE-LICENSE.txt`) eklendi. Lisans kaynağı: https://raw.githubusercontent.com/mrdoob/three.js/r160/LICENSE
 
 ## Yeni depo oluşturma
 
@@ -18,7 +18,7 @@ Git kullanıyorsan, ZIP'i açtığın klasörde aşağıdaki komutları çalış
 ```sh
 git init -b main
 git add .
-git commit -m "POTA 2.0.3 kaynak projesi"
+git commit -m "POTA 2.0.4 kaynak projesi"
 git remote add origin https://github.com/pisanadam/Pota.git
 git push -u origin main
 ```

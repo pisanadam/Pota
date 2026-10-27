@@ -1,16 +1,16 @@
 # POTA — Google Play yayın hazırlığı
 
-**Teslim edilen 2.0.3 APK/AAB çevrimdışı sürümdür.** Google Mobile Ads veya UMP SDK'sı, reklam gösterimi ve reklam puan çarpanları içermez. Temel oyun, istatistikler ve kozmetikler cihazda çalışır; giriş gerekmez. Hazırlanma: **18 Ekim 2026**.
+**2.0.4 APK/AAB çevrimdışı sürümdür.** Google Mobile Ads veya UMP SDK'sı, reklam gösterimi ve reklam puan çarpanları içermez. Temel oyun, istatistikler ve kozmetikler cihazda çalışır; giriş gerekmez. Hazırlanma: **18 Ekim 2026**.
 
 Bu klasör yayın materyallerini içerir. Play Console'a gönderim yapılmadı; mağaza hesabı açılmadı.
 
 ## Mevcut sürümün dosyaları
 
 - `store-listing/tr-TR.txt`: ad, kısa ve tam açıklama; reklam vaadi içermez.
-- `store-listing/release-notes-tr.txt`: 2.0.3 sürüm notları.
+- `store-listing/release-notes-tr.txt`: 2.0.4 sürüm notları.
 - `store-listing/console-fields.md`: mevcut çevrimdışı sürüm için Console alanları.
 - `graphics/`: 512×512 mağaza simgesi ve 1024×500 tanıtım görseli.
-- `screenshots/`: son oyun görünümünden üç gerçek 1080×1920 ekran; çekim kaynağı ve hash manifestte.
+- `screenshots/`: 2.0.4 oyun görünümünden dört gerçek 1080×1920 ekran; çekim kaynağı ve hash manifestte.
 - `policies/privacy-policy-tr.md`: mevcut çevrimdışı sürümün doldurulacak gizlilik metni.
 - `policies/data-safety-worksheet.md`: mevcut SDK'sız/yerel sürüm için Veri Güvenliği taslağı.
 - `policies/android-permissions.md`: çevrimdışı izin envanteri.
@@ -32,7 +32,7 @@ Mevcut çevrimdışı sürüm için AdMob hesabı, reklam kimliği veya app-ads.
 
 ## Teknik bilgiler ve sınırlar
 
-Ana Android sürümü: **2.0.3 / versionCode 17**, paket `com.pota.court`, minSdk **23** (Android 6), compile/targetSdk **36**. Nihai versionCode, imza, izinler ve AAB içeriği derleme raporuyla eşleştirilmelidir. 18 Ekim 2026'da yeni telefon/tablet gönderimleri API 36 veya üzerini hedeflemelidir.
+Ana Android sürümü: **2.0.4 / versionCode 18**, paket `com.pota.court`, minSdk **23** (Android 6), compile/targetSdk **36**. Nihai versionCode, imza, izinler ve AAB içeriği derleme raporuyla eşleştirilmelidir. 18 Ekim 2026'da yeni telefon/tablet gönderimleri API 36 veya üzerini hedeflemelidir.
 
 APK kurulum/test içindir; Play'e imzalı **AAB** yüklenir. Bütün cihazlarda açılma veya sabit 60/120 FPS garanti edilemez. Donanım, Android/WebView sürümü, ekran, ısı ve güç yönetimi sonucu etkiler. Fiziksel cihaz testi yapıldıysa yalnız gerçekten doğrulanan senaryoları bildirin.
 

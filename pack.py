@@ -8,7 +8,7 @@ licenses=json.loads((sample_root/'provenance.json').read_text()) if (sample_root
 (src/'audio-samples.js').write_text('/* Embedded recorded audio. Sources and licenses: vendor/audio/provenance.json */\nwindow.PotaAudioSamples='+json.dumps(samples,separators=(',',':'))+';\nwindow.PotaAudioLicenses='+json.dumps(licenses,ensure_ascii=False,separators=(',',':'))+';\n')
 html=(src/'index.html').read_text()
 html=html.replace('<link rel="stylesheet" href="style.css">','<style>\n'+(src/'style.css').read_text()+'\n</style>')
-for name,path in [('three.min.js',root/'vendor'/'three.min.js'),('physics.js',src/'physics.js'),('net.js',src/'net.js'),('graphics.js',src/'graphics.js'),('weather.js',src/'weather.js'),('scene.js',src/'scene.js'),('compat-scene.js',src/'compat-scene.js'),('audio-samples.js',src/'audio-samples.js'),('audio.js',src/'audio.js'),('shop.js',src/'shop.js'),('rewards.js',src/'rewards.js'),('fairplay.js',src/'fairplay.js'),('rewarded.js',src/'rewarded.js'),('game.js',src/'game.js')]:
+for name,path in [('three.min.js',root/'vendor'/'three.min.js'),('physics.js',src/'physics.js'),('net.js',src/'net.js'),('graphics.js',src/'graphics.js'),('weather.js',src/'weather.js'),('scene.js',src/'scene.js'),('compat-scene.js',src/'compat-scene.js'),('audio-samples.js',src/'audio-samples.js'),('audio.js',src/'audio.js'),('shop.js',src/'shop.js'),('rewards.js',src/'rewards.js'),('goals.js',src/'goals.js'),('fairplay.js',src/'fairplay.js'),('rewarded.js',src/'rewarded.js'),('game.js',src/'game.js')]:
     script=path.read_text().replace('</script','<\\/script')
     ref=('../vendor/' if name=='three.min.js' else '')+name
     html=html.replace('<script src="'+ref+'"></script>','<script>\n'+script+'\n</script>')

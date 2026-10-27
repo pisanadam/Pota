@@ -13,7 +13,7 @@
 | Giriş / hesap | Yok |
 | İnternet gereksinimi | Temel oyun internet gerektirmez |
 | Paket | com.pota.court |
-| Sürüm | 2.0.3 / versionCode 17; nihai AAB ile doğrula |
+| Sürüm | 2.0.4 / versionCode 18; nihai AAB ile doğrula |
 | Destek e-postası | **UNRESOLVED — gerçek erişilebilir adres** |
 | Geliştirici adı | **UNRESOLVED — gerçek kişi veya kuruluş** |
 | Gizlilik URL'si | **UNRESOLVED — doldurulmuş metnin herkese açık kalıcı URL'si** |

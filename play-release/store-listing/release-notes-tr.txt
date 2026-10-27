@@ -1,9 +1,7 @@
 <tr-TR>
-• Tekrarlanan otomatik atışlara yönelik davranış denetimi güncellendi.
-• Grafik tercihi: daha yüksek çözünürlük ve ayrıntıyla 60 FPS hedefi.
-• Dengeli tercihi: destekleyen ekranlarda 90 FPS hedefi.
-• Akıcılık tercihi: ekrana göre 60/120 FPS hedefi.
-• Güncel puan ayarlar düğmesinin solunda görünür.
-• Otomatik grafik/çözünürlük; ayrıntılı ayarlar geliştirici modunda.
+• Yeni: tek seferlik puan ödüllü 16 hedef (menü > Hedefler).
+• Sahanın öbür yarısındaki potaya da atış yapabilirsin.
+• Gezinme modunda panyanın arkasına geçilemez.
+• Seri bonusu basket başına en fazla +10.
 • Çevrimdışı, reklam SDK'sı içermeyen Android sürümü.
 </tr-TR>

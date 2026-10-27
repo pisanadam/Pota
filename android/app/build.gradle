@@ -18,8 +18,8 @@ android {
         applicationId 'com.pota.court'
         minSdk 23
         targetSdk 36
-        versionCode 17
-        versionName '2.0.3'
+        versionCode 18
+        versionName '2.0.4'
         buildConfigField 'String', 'PRIVACY_POLICY_URL', '"' + privacyUrl + '"'
         manifestPlaceholders = [admobAppId: configured ? productionAppId : googleTestAppId]
     }

@@ -1,4 +1,4 @@
-> **Güncel proje: POTA 2.0.3 / versionCode 17.** Aşağıdaki belge önceki 2.0.0 kurulum kılavuzudur; sürüm/tercih bilgileri için `../README.md` ve `../play-release/SURUM-2.0.3.md` esas alınmalıdır. Özel imza yedeğinin güçlü parolalarını POTA_* ortam/Gradle özellikleriyle sağlayın.
+> **Güncel proje: POTA 2.0.4 / versionCode 18.** Aşağıdaki belge önceki 2.0.0 kurulum kılavuzudur; sürüm/tercih bilgileri için `../README.md` ve `../play-release/SURUM-2.0.4.md` esas alınmalıdır. Özel imza yedeğinin güçlü parolalarını POTA_* ortam/Gradle özellikleriyle sağlayın.
 
 # POTA Android 2.0.0
 

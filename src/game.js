@@ -8,7 +8,7 @@ function uiOpen(){return dialog.open||Boolean(shopDialog&&shopDialog.open);}
 const STORAGE_KEY = 'pota.fixed-shots.v1';
 const BALL_SKINS=window.PotaShopCatalog.filter(item=>item.type==='ball').map(item=>item.id),PARTICLE_STYLES=window.PotaShopCatalog.filter(item=>item.type==='particle').map(item=>item.id);
 const COURT_FIELDS={net:{owned:'ownedNets',equipped:'equippedNet',base:'nylon',setter:'setNetStyle'},rim:{owned:'ownedRims',equipped:'equippedRim',base:'standard',setter:'setRimStyle'},backboard:{owned:'ownedBackboards',equipped:'equippedBackboard',base:'glass',setter:'setBackboardStyle'},environment:{owned:'ownedEnvironments',equipped:'equippedEnvironment',base:'gym',setter:'setEnvironmentStyle'}};
-const defaults = () => ({attempts:0,made:0,streak:0,best:0,sound:true,showFPS:false,performancePreference:'smooth',developerMode:false,graphicsQuality:'auto',resolutionQuality:'auto',history:[],balance:0,totalPoints:0,ownedBalls:['classic'],ownedParticles:['none'],equippedBall:'classic',equippedParticle:'none',ownedNets:['nylon'],equippedNet:'nylon',ownedRims:['standard'],equippedRim:'standard',ownedBackboards:['glass'],equippedBackboard:'glass',ownedEnvironments:['gym'],equippedEnvironment:'gym'});
+const defaults = () => ({attempts:0,made:0,streak:0,best:0,sound:true,showFPS:false,performancePreference:'smooth',developerMode:false,graphicsQuality:'auto',resolutionQuality:'auto',history:[],balance:0,totalPoints:0,ownedBalls:['classic'],ownedParticles:['none'],equippedBall:'classic',equippedParticle:'none',ownedNets:['nylon'],equippedNet:'nylon',ownedRims:['standard'],equippedRim:'standard',ownedBackboards:['glass'],equippedBackboard:'glass',ownedEnvironments:['gym'],equippedEnvironment:'gym',goals:window.PotaGoals.normalize(null)});
 let stats = defaults();
 try {
  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -34,6 +34,9 @@ try {
    if(Array.isArray(saved[field.owned]))stats[field.owned]=[...new Set([field.base,...saved[field.owned].filter(id=>allowed.includes(id))])];
    if(stats[field.owned].includes(saved[field.equipped]))stats[field.equipped]=saved[field.equipped];
   }
+  stats.goals=window.PotaGoals.normalize(saved.goals);
+  // Saves from before goals existed: credit earlier baskets and streaks once.
+  if(!saved.goals){stats.goals.progress.baskets=stats.made;stats.goals.progress.bestStreak=stats.best;}
  }
 } catch (_) {}
 function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(stats));}catch(_){}}
@@ -53,7 +56,7 @@ function updateStats(){
  const rate=stats.attempts?Math.round(100*stats.made/stats.attempts):0;
  $('accuracy').innerHTML=rate+'<span>%</span>';
  for(const key of ['made','attempts','streak','best'])$(key).textContent=stats[key];
- $('stat-caption').textContent=stats.streak?'Sonraki basket +'+stats.streak+' seri bonusu.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
+ $('stat-caption').textContent=stats.streak?'Sonraki basket +'+Math.min(stats.streak,window.PotaRewards.MAX_STREAK_BONUS)+' seri bonusu.':stats.attempts?'Yeni bir seri başlat.':'İlk şutunla başla.';
  $('sound-button').setAttribute('aria-pressed',String(stats.sound));
  $('sound-button').innerHTML='<svg><use href="#i-'+(stats.sound?'sound':'muted')+'"/></svg><span>Ses '+(stats.sound?'açık':'kapalı')+'</span>';
  $('performance-preference').value=stats.performancePreference;
@@ -69,6 +72,22 @@ function updateStats(){
  $('current-points-value').textContent=(stats.balance>=100000?compactPointsNumber:pointsNumber).format(stats.balance);
  $('current-points').title=pointsNumber.format(stats.balance)+' harcanabilir puan';
  if($('total-points'))$('total-points').textContent=stats.totalPoints;
+ renderGoals();
+}
+function renderGoals(){
+ const list=$('goals-list');if(!list)return;
+ const goals=window.PotaGoals.summary(stats.goals);
+ $('goals-count').textContent=goals.filter(goal=>goal.done).length+'/'+goals.length;
+ list.replaceChildren(...goals.map(goal=>{
+  const item=document.createElement('li');item.className='goal-item'+(goal.done?' is-done':'');
+  const title=document.createElement('strong');title.textContent=goal.name;
+  const reward=document.createElement('span');reward.className='goal-reward';reward.textContent=goal.done?'Tamamlandı':'+'+pointsNumber.format(goal.reward);
+  const text=document.createElement('p');text.textContent=goal.description;
+  const progress=document.createElement('span');progress.className='goal-progress';
+  const bar=document.createElement('i'),fill=document.createElement('b');fill.style.width=(100*goal.current/goal.target)+'%';bar.appendChild(fill);
+  progress.append(bar,pointsNumber.format(goal.current)+' / '+pointsNumber.format(goal.target));
+  item.append(title,reward,text,progress);return item;
+ }));
 }
 updateStats();
 let nativeInfo={};
@@ -96,6 +115,11 @@ world.setBallSkin(stats.equippedBall);world.setParticleStyle(stats.equippedParti
 for(const field of Object.values(COURT_FIELDS))world[field.setter](stats[field.equipped]);
 const cameraPosition=new T.Vector3(0,1.7,-7.35);
 const lookTarget=new T.Vector3(0,2.72,-12.35);
+// The player faces the hoop on their half of the court. Walking stops in
+// front of each backboard: no shooting from behind the glass.
+let activeHoop=0;
+const COURT_LIMIT_Z=Math.abs(P.hoops[0].z)-.1;
+function faceHoop(index){activeHoop=index;const hoop=P.hoops[index];lookTarget.set(hoop.x,2.72,hoop.z);}
 world.camera.position.copy(cameraPosition);world.camera.lookAt(lookTarget);
 const forward=new T.Vector3();world.camera.getWorldDirection(forward);
 const right=new T.Vector3().crossVectors(forward,new T.Vector3(0,1,0)).normalize();
@@ -118,10 +142,13 @@ function alignView(){
 function movePlayer(side,advance){
  const horizontalLength=Math.hypot(forward.x,forward.z)||1;
  cameraPosition.x=Math.max(-7.2,Math.min(7.2,cameraPosition.x+right.x*side+forward.x/horizontalLength*advance));
- cameraPosition.z=Math.max(-13.55,Math.min(13.55,cameraPosition.z+right.z*side+forward.z/horizontalLength*advance));
+ cameraPosition.z=Math.max(-COURT_LIMIT_Z,Math.min(COURT_LIMIT_Z,cameraPosition.z+right.z*side+forward.z/horizontalLength*advance));
  for(const hoop of P.hoops){const dx=cameraPosition.x-hoop.x,dz=cameraPosition.z-hoop.z,distance=Math.hypot(dx,dz);if(distance<1.05){cameraPosition.x=hoop.x+(distance?dx/distance:0)*1.05;cameraPosition.z=hoop.z+(distance?dz/distance:1)*1.05;}}
  alignView();
 }
+// Turn when shooting resumes: flipping during a walk would reverse its
+// controls and bounce a player who keeps walking back across half court.
+function updateFacing(){const next=cameraPosition.z>0?1:0;if(next!==activeHoop){faceHoop(next);alignView();}}
 alignView();
 let state='ready',drag=null,flight=null,returnTime=0,releaseTime=0,afterResult=0,netPulse=0,recorded=false,firstShot=false;
 let lastTime=0,worldTime=0,physicsRemainder=0,shotSerial=0;
@@ -180,7 +207,7 @@ function getHold(time){ // A ball held naturally below the line of sight.
  return hold;
 }
 function hideIntro(){if(!firstShot){firstShot=true;$('intro').classList.add('fade');$('gesture-cue').classList.remove('show');}}
-function shotPointValue(){const hoop=P.hoops[0],dx=cameraPosition.x-hoop.x,dz=(cameraPosition.z-hoop.z)*hoop.front;return (dz<1.415?Math.abs(dx)>6.625:Math.hypot(dx,dz)>6.775)?3:2;}
+function shotPointValue(){const hoop=P.hoops[activeHoop],dx=cameraPosition.x-hoop.x,dz=(cameraPosition.z-hoop.z)*hoop.front;return (dz<1.415?Math.abs(dx)>6.625:Math.hypot(dx,dz)>6.775)?3:2;}
 let scorePopupTimer;
 function showScore(points,bonus=0,blocked=false,multiplier=1){
  const popup=$('score-popup');clearTimeout(scorePopupTimer);popup.textContent=blocked?'Basket':'+'+points;popup.hidden=false;
@@ -188,22 +215,31 @@ function showScore(points,bonus=0,blocked=false,multiplier=1){
  popup.classList.remove('show');void popup.offsetWidth;popup.classList.add('show');
  scorePopupTimer=setTimeout(()=>{popup.hidden=true;popup.classList.remove('show');},1800);
 }
+let goalToastTimer;
+function showGoals(goals,reward){
+ const toast=$('goal-toast');clearTimeout(goalToastTimer);
+ $('goal-toast-title').textContent=goals.length===1?'Hedef tamamlandı: '+goals[0].name:goals.length+' hedef tamamlandı';
+ $('goal-toast-message').textContent='+'+pointsNumber.format(reward)+' puan ödül';
+ toast.hidden=false;goalToastTimer=setTimeout(()=>{toast.hidden=true;},4500);
+}
 function finishRecord(made){if(recorded)return;recorded=true;const pointsBlocked=flight.fairplay.allowPoints===false,reward=window.PotaRewards.calculate(stats,flight.shotPoints,made&&!pointsBlocked,flight.pointMultiplier);stats.attempts++;stats.streak=reward.streak;stats.best=reward.best;if(made){stats.made++;stats.balance=Math.min(Number.MAX_SAFE_INTEGER,stats.balance+reward.points);stats.totalPoints=Math.min(Number.MAX_SAFE_INTEGER,stats.totalPoints+reward.points);netPulse++;showScore(flight.shotPoints*reward.multiplier,reward.bonus*reward.multiplier,pointsBlocked,reward.multiplier);if(navigator.vibrate)navigator.vibrate(20);}
- stats.history.push({made,speed:flight.shotSpeed,angle:flight.shotAngle,value:flight.shotPoints,bonus:reward.bonus,multiplier:reward.multiplier,points:reward.points,pointsBlocked,time:Date.now()});stats.history=stats.history.slice(-100);persist();updateStats();$('announce').textContent=made?pointsBlocked?'Basket. Otomatik atış tekrarından puan verilmedi. Top eline geri geliyor.':'Basket. '+reward.points+' puan kazandın. Top eline geri geliyor.':'Şut kaçtı. Seri sıfırlandı. Top eline geri geliyor.';
+ const goalResult=window.PotaGoals.record(stats.goals,{made,pointsBlocked,value:flight.shotPoints,streak:reward.streak,swish:flight.rimContacts+flight.boardContacts+flight.frameContacts===0,bank:flight.boardContacts>0,hoop:flight.scoredHoop});stats.goals=goalResult.state;
+ if(goalResult.reward){stats.balance=Math.min(Number.MAX_SAFE_INTEGER,stats.balance+goalResult.reward);stats.totalPoints=Math.min(Number.MAX_SAFE_INTEGER,stats.totalPoints+goalResult.reward);showGoals(goalResult.newlyCompleted,goalResult.reward);}
+ stats.history.push({made,speed:flight.shotSpeed,angle:flight.shotAngle,value:flight.shotPoints,hoop:activeHoop,bonus:reward.bonus,multiplier:reward.multiplier,points:reward.points,pointsBlocked,time:Date.now()});stats.history=stats.history.slice(-100);persist();updateStats();$('announce').textContent=(goalResult.reward?'Hedef tamamlandı, '+goalResult.reward+' puan ödül. ':'')+(made?pointsBlocked?'Basket. Otomatik atış tekrarından puan verilmedi. Top eline geri geliyor.':'Basket. '+reward.points+' puan kazandın. Top eline geri geliyor.':'Şut kaçtı. Seri sıfırlandı. Top eline geri geliyor.');
 }
 function shotOptions(d){
  const reference=Math.max(130,Math.min(220,height*.25));
  const ratio=Math.min(2.3,Math.max(0,d.dy/reference));
- const distance=Math.hypot(release.x-P.hoops[0].x,release.z-P.hoops[0].z);
+ const distance=Math.hypot(release.x-P.hoops[activeHoop].x,release.z-P.hoops[activeHoop].z);
  const minimumAngle=Math.min(83,89-9*distance);
  let angle=Math.min(83,Math.max(50+Math.min(12,ratio*4),minimumAngle));
  // A distant shot needs a flatter arc inside an actual gym ceiling.
  while(angle>35){
-  const estimatedSpeed=P.idealSpeed(release,0,angle),vertical=estimatedSpeed*Math.sin(angle*Math.PI/180),dragRate=P.AIR_DRAG;
+  const estimatedSpeed=P.idealSpeed(release,activeHoop,angle),vertical=estimatedSpeed*Math.sin(angle*Math.PI/180),dragRate=P.AIR_DRAG;
   const apex=release.y+vertical/dragRate-P.G/(dragRate*dragRate)*Math.log1p(dragRate*vertical/P.G);
   if(apex<P.roomBounds.ceiling-P.BALL_RADIUS-.18)break;angle-=1;
  }
- const ideal=P.idealSpeed(release,0,angle);
+ const ideal=P.idealSpeed(release,activeHoop,angle);
  // A gentle response near a medium swipe gives the finger finer power control.
  // The simulated flight and contacts still determine every result.
  const difference=ratio-1;
@@ -219,7 +255,7 @@ function shotOptions(d){
   curve+=((a.x+b.x)*.5-d.dx*(a.y+b.y)*.5/d.dy)*dy;
  }
  const sideSpin=Math.max(-36,Math.min(36,-curve/Math.max(22,d.dy)/reference*95));
- return {position:release,targetHoop:0,speed,angleDeg:angle,azimuthOffset:direction,sideSpin};
+ return {position:release,targetHoop:activeHoop,speed,angleDeg:angle,azimuthOffset:direction,sideSpin};
 }
 let aimPreview=null,previewKey='';
 function hideAimArrow(){aimPreview=null;previewKey='';world.setAimArrow([],false);world.setTrajectory([],false);}
@@ -278,7 +314,7 @@ let keyChargeStart=0;
 canvas.addEventListener('keydown',event=>{if(mode==='walk'&&!uiOpen()&&['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)){event.preventDefault();walkKeys.add(event.code);return;}if(mode==='shoot'&&event.code==='Space'&&!event.repeat&&state==='ready'&&!uiOpen()){event.preventDefault();ensureAudio();keyChargeStart=performance.now();drag={id:'key',dx:0,dy:0,startedAt:inputTime(event),trusted:event.isTrusted===true,fairplaySamples:[{x:0,y:0,t:0}]};state='aim';hideIntro();}if(event.code==='ArrowLeft'&&drag&&drag.id==='key'){event.preventDefault();drag.dx-=5;}if(event.code==='ArrowRight'&&drag&&drag.id==='key'){event.preventDefault();drag.dx+=5;}});
 canvas.addEventListener('keyup',event=>{walkKeys.delete(event.code);if(event.code==='Space'&&drag&&drag.id==='key'){event.preventDefault();drag.endedAt=Math.max(drag.startedAt,inputTime(event));drag.trusted=drag.trusted&&event.isTrusted===true;drag.fairplaySamples.push({x:drag.dx,y:drag.dy,t:drag.endedAt-drag.startedAt});throwBall();}});
 window.addEventListener('blur',()=>{fairplay.interrupt();clearFairplayNotice();walkKeys.clear();roamDrag=null;if(state==='aim'){drag=null;state='ready';hideAimArrow();}});
-function pauseGame(){stopFrames();fairplay.interrupt();clearFairplayNotice();walkKeys.clear();roamDrag=null;physicsRemainder=0;if(state==='aim'){drag=null;state='ready';hideAimArrow();}clearTimeout(scorePopupTimer);$('score-popup').hidden=true;audio.suspend();}
+function pauseGame(){stopFrames();fairplay.interrupt();clearFairplayNotice();walkKeys.clear();roamDrag=null;physicsRemainder=0;if(state==='aim'){drag=null;state='ready';hideAimArrow();}clearTimeout(scorePopupTimer);$('score-popup').hidden=true;clearTimeout(goalToastTimer);$('goal-toast').hidden=true;audio.suspend();}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseGame();else{lastTime=0;scheduleFrame();}});
 window.addEventListener('pota:pause',()=>{appPaused=true;pauseGame();});
 window.addEventListener('pota:resume',()=>{appPaused=false;lastTime=0;scheduleFrame();});
@@ -337,7 +373,7 @@ function frame(milliseconds){frameRequest=0;
    ballDisplay.copy(returnStart).lerp(getHold(worldTime),easing);ballDisplay.y+=Math.sin(progress*Math.PI)*.42;world.setBall(ballDisplay);
    if(progress===1){state='ready';flight=null;$('menu-button').disabled=false;$('announce').textContent='Yeni şut için hazır.';updateRewardedUI(rewarded.getState());}
   }
-  world.animate(dt,worldTime,{netPulse,targetHoop:-1,ballState:state==='flight'?flight:null});
+  world.animate(dt,worldTime,{netPulse,targetHoop:Math.sign(P.hoops[activeHoop].z),ballState:state==='flight'?flight:null});
   for(const movement of world.getNetAudioState())audio.netMotion(movement);
   world.render();
   if(world.samplePerformanceFrame)world.samplePerformanceFrame({now:milliseconds,frameMs,renderMs:performance.now()-frameStart,visible:true});
@@ -350,7 +386,7 @@ function frame(milliseconds){frameRequest=0;
 world.setBall(getHold(0));world.render();$('loading').classList.add('done');setTimeout(()=>$('loading').hidden=true,700);scheduleFrame();
 function closeMenu(){dialog.close();$('reset-confirm').hidden=true;canvas.focus({preventScroll:true});ensureAudio();}
 function setMode(next){
- if(state!=='ready')return;fairplay.interrupt();clearFairplayNotice();mode=next;walkKeys.clear();roamDrag=null;hideAimArrow();world.ball.visible=mode==='shoot';
+ if(state!=='ready')return;fairplay.interrupt();clearFairplayNotice();mode=next;walkKeys.clear();roamDrag=null;if(mode==='shoot')updateFacing();hideAimArrow();world.ball.visible=mode==='shoot';
  $('shoot-mode').setAttribute('aria-pressed',String(mode==='shoot'));$('walk-mode').setAttribute('aria-pressed',String(mode==='walk'));
  canvas.setAttribute('aria-label',mode==='walk'?'Sahada gezinmek için parmağınla sürükle. Klavyede WASD veya yön tuşlarını kullan.':'Şut için yukarı kaydır; kavis çizerek falso ver. Ok ve izler uçuşu gösterir.');
  $('intro').querySelector('p').textContent=mode==='walk'?'Sahayı sürükleyerek dolaş.':'Bu noktadan şut at.';
@@ -369,7 +405,7 @@ $('performance-preference').addEventListener('change',()=>{const value=$('perfor
 $('developer-toggle').addEventListener('click',()=>{stats.developerMode=!stats.developerMode;if(!stats.developerMode){stats.graphicsQuality='auto';stats.resolutionQuality='auto';}applyPresentation();persist();updateStats();world.render();});
 for(const[id,key,allowed]of [['graphics-quality','graphicsQuality',['auto','balanced','high','ultra']],['resolution-quality','resolutionQuality',['auto','low','medium','high','max']]])$(id).addEventListener('change',()=>{const value=$(id).value;if(!stats.developerMode||!allowed.includes(value)){updateStats();return;}stats[key]=value;applyPresentation();persist();world.render();});
 $('reset-stats').addEventListener('click',()=>{$('reset-confirm').hidden=false;});$('cancel-reset').addEventListener('click',()=>{$('reset-confirm').hidden=true;});
-$('confirm-reset').addEventListener('click',()=>{fairplay.interrupt();clearFairplayNotice();const retained={sound:stats.sound,showFPS:stats.showFPS,performancePreference:stats.performancePreference,developerMode:stats.developerMode,graphicsQuality:stats.graphicsQuality,resolutionQuality:stats.resolutionQuality,balance:stats.balance,totalPoints:stats.totalPoints,ownedBalls:stats.ownedBalls,ownedParticles:stats.ownedParticles,equippedBall:stats.equippedBall,equippedParticle:stats.equippedParticle};for(const field of Object.values(COURT_FIELDS)){retained[field.owned]=stats[field.owned];retained[field.equipped]=stats[field.equipped];}stats={...defaults(),...retained};persist();updateStats();$('reset-confirm').hidden=true;});
+$('confirm-reset').addEventListener('click',()=>{fairplay.interrupt();clearFairplayNotice();const retained={sound:stats.sound,showFPS:stats.showFPS,performancePreference:stats.performancePreference,developerMode:stats.developerMode,graphicsQuality:stats.graphicsQuality,resolutionQuality:stats.resolutionQuality,balance:stats.balance,totalPoints:stats.totalPoints,ownedBalls:stats.ownedBalls,ownedParticles:stats.ownedParticles,equippedBall:stats.equippedBall,equippedParticle:stats.equippedParticle,goals:stats.goals};for(const field of Object.values(COURT_FIELDS)){retained[field.owned]=stats[field.owned];retained[field.equipped]=stats[field.equipped];}stats={...defaults(),...retained};persist();updateStats();$('reset-confirm').hidden=true;});
 const shop=window.createPotaShop({
  getEconomy:()=>{
   const economy={balance:stats.balance,ownedBalls:[...stats.ownedBalls],ownedParticles:[...stats.ownedParticles],equippedBall:stats.equippedBall,equippedParticle:stats.equippedParticle};
@@ -395,5 +431,5 @@ let contextRecoveryTimer=0;
 canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();graphicsLost=true;stopFrames();audio.suspend();$('loading').hidden=false;$('loading').classList.remove('done');$('loading').querySelector('p').textContent='Grafikler yeniden hazırlanıyor…';contextRecoveryTimer=setTimeout(()=>{try{sessionStorage.setItem('pota.compatibility','true');}catch(_){}location.reload();},5000);});
 canvas.addEventListener('webglcontextrestored',()=>{clearTimeout(contextRecoveryTimer);graphicsLost=false;lastTime=0;renderPaceTime=null;$('loading').hidden=true;scheduleFrame();});
 // Read-only diagnostics for reproducible offline verification.
-window.Pota={getState:()=>({state,mode,targetFps,displayRefreshRate,rewarded:rewarded.getState(),position:{x:cameraPosition.x,y:cameraPosition.y,z:cameraPosition.z},release:{...release},shotValue:shotPointValue(),stats:JSON.parse(JSON.stringify(stats)),arrowVisible:world.aimArrow.visible,aim:aimPreview?JSON.parse(JSON.stringify(aimPreview)):null,net:world.getNetDiagnostics(),cosmetics:world.getCosmeticState(),graphics:world.getGraphicsDiagnostics(),weather:world.getWeatherDiagnostics(),audio:audio.diagnostics,fairplay:fairplay.getDiagnostics(),ball:flight?{position:{...flight.position},time:flight.time,scored:flight.scored,guide:flight.drawingGuide?{active:flight.drawingGuide.active,elapsed:flight.drawingGuide.elapsed,duration:flight.drawingGuide.duration,reason:flight.drawingGuide.reason}:null}:null}),getShotReference:()=>Math.max(130,Math.min(220,height*.25))};
+window.Pota={getState:()=>({state,mode,activeHoop,targetFps,displayRefreshRate,rewarded:rewarded.getState(),position:{x:cameraPosition.x,y:cameraPosition.y,z:cameraPosition.z},release:{...release},shotValue:shotPointValue(),stats:JSON.parse(JSON.stringify(stats)),arrowVisible:world.aimArrow.visible,aim:aimPreview?JSON.parse(JSON.stringify(aimPreview)):null,net:world.getNetDiagnostics(),cosmetics:world.getCosmeticState(),graphics:world.getGraphicsDiagnostics(),weather:world.getWeatherDiagnostics(),audio:audio.diagnostics,fairplay:fairplay.getDiagnostics(),ball:flight?{position:{...flight.position},time:flight.time,scored:flight.scored,guide:flight.drawingGuide?{active:flight.drawingGuide.active,elapsed:flight.drawingGuide.elapsed,duration:flight.drawingGuide.duration,reason:flight.drawingGuide.reason}:null}:null}),getShotReference:()=>Math.max(130,Math.min(220,height*.25))};
 })();

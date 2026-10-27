@@ -1,37 +1,42 @@
 {
-  "source_asset_sha256": "113007b0360abfd830b46a4c33a6cc42c550444c8764d87fc864774bd04ec6bb",
-  "source_asset_bytes": 1576734,
-  "capture": "Actual final game Chromium WebGL rendering, CSS viewport 360x640, deviceScaleFactor 3. Not a physical phone capture.",
-  "quality": "Default automatic graphics and resolution. No GPU cap or quality override.",
-  "seed": "Only environments gym/desert-court/alpine-court unlocked for capture; balance0,totalPoints0,sound false,showFPS false; actual shop buttons used. Native ads unavailable and hidden.",
+  "source_asset_sha256": "6a88aad48309b7906e424622108aaf7d25de3520db4f5670b83a6c88d9cfb1e3",
+  "source_asset_bytes": 1593885,
+  "capture": "Chromium (SwiftShader WebGL) rendering of the packed game asset by qa/capture-screenshots.js; CSS viewport 360x640, deviceScaleFactor 3. Not a physical phone capture.",
+  "quality": "Default automatic graphics and resolution. No quality override.",
+  "seed": "Shots 01-03: fresh save with sound off; shots, basket, score and goal notice come from real swipes. Shot 04: desert court added to the local inventory before loading. Native ads unavailable and hidden.",
   "postprocessing": "None. No crops, frames, text overlays, or image edits.",
   "files": [
     {
       "file": "01-gym.png",
+      "description": "Fresh start, classic gym, default shot view.",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB",
-      "bytes": 912995,
-      "sha256": "0b6b73c0b0278daf6d5adf80a64369e018f4929c34b07d1405c4150704c6fa7b"
+      "bytes": 916271,
+      "sha256": "3863a2c16b5ab05b08644874ed02335efbf669d1fe98f48a6ce0d059a8140f2c"
     },
     {
-      "file": "02-desert-court.png",
+      "file": "02-first-goal.png",
+      "description": "First basket of a fresh game and its goal reward notice.",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB",
-      "bytes": 1578636,
-      "sha256": "44292a66fe479eecb4d8642555ae39826f9eb8bee5c73c4e5dc24ca1fb28207a"
+      "bytes": 461670,
+      "sha256": "c7009ce5dec0c31890bf3170a66b3af495508b49c9636e8123424721842e185f"
     },
     {
-      "file": "03-alpine-court.png",
+      "file": "03-goals.png",
+      "description": "Menu goal list after the shots above.",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB",
-      "bytes": 1519963,
-      "sha256": "ac49f4814ca66c68bb05838c1b5d6bce001686f4ebe2fd48f6a872552f93f84c"
+      "bytes": 305572,
+      "sha256": "068569a0e698009218d1f1bfda9aaee12395a3615f71d14e8adba67ca3eefb35"
+    },
+    {
+      "file": "04-desert-court.png",
+      "description": "Desert court with the aim arrow while dragging.",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 1136214,
+      "sha256": "b994e261c607119eb6ddf602ae43aa62ca065ad2b02ad66728918fb1388d23da"
     }
-  ],
-  "compatible_final_asset_sha256": "8f2b6c669d89558e5fbc5ee3f91493399fd210f43695279b8230417170dd9035",
-  "compatible_final_asset_bytes": 1577070,
-  "compatibility_note": "Final source changed only native memory/refresh hint handling; captures have no native hints and visuals are unchanged. Original capture source SHA is retained truthfully. Main delivered Android offline flavor excludes all ad SDKs and permissions."
+  ]
 }
